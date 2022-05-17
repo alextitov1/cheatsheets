@@ -1,15 +1,36 @@
 
+Pipelines - specify the steps that need to run to get the result you want
+
+www.travis.com
+
+Additional Tools
+
+Check out the following links for more information:
+
+    https://arp242.net/diy.html 
+
+    https://help.github.com/en/articles/closing-issues-using-keywords
+
+    https://help.github.com/en/articles/setting-guidelines-for-repository-contributors 
+
+    https://www.infoworld.com/article/3271126/what-is-cicd-continuous-integration-and-continuous-delivery-explained.html
+
+    https://stackify.com/what-is-cicd-whats-important-and-how-to-get-it-right/
+
+    https://docs.travis-ci.com/user/tutorial/
+
+    https://docs.travis-ci.com/user/build-stages/
+
+
 diff -u
 patch
 
 # git
 The `.git` directory contains all the changes and their history and the working tree contains the current versions of the files.
 
-
 git init
 
 git status
-
 
 git config -l
 
@@ -66,7 +87,7 @@ git revert "hash .. " # rever any commit
 
 `git branch -d branchname` - delete a branch
 
-`git merch even-better-feature` - merge the branch into the master brach
+`git merge even-better-feature` - merge the branch into the master brach
 
 if there is a conflict:
 
@@ -86,6 +107,21 @@ git merge --abort #will cancell a merge
 
 <br>
 
+about merge and pull requests https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges
+
+<br>
+More Information on Code Reviews
+
+Check out the following links for more information:
+
+    http://google.github.io/styleguide/
+
+    https://help.github.com/en/articles/about-pull-request-reviews
+
+    https://medium.com/osedea/the-perfect-code-review-process-845e6ba5c31
+
+    https://smartbear.com/learn/code-review/what-is-code-review/
+
 ---
 HEAD is an alias to represetn the currently checked-out snapshot of your project
 
@@ -101,5 +137,6 @@ http://stopwritingramblingcommitmessages.com/
 https://thoughtbot.com/blog/5-useful-tips-for-a-better-commit-message
 
 
+git rebase -i HEAD~3 # squash last 3 commits
 
 
