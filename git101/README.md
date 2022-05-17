@@ -19,7 +19,9 @@ git log -p [-2] #(p for patche) - shows changes
 
 git log --stat - shows chages stats
 
-git log --graph --oneline
+git log --graph --oneline [--all]
+
+git log -p origin/master
 
 git show fc1009896cd27f3c223af528e79b8521f1c84a21 - shows commint info
 
@@ -84,7 +86,41 @@ lastly
 git merge --abort #will cancell a merge
 
 
+git fetch 
+
+git pull = git fetch + git merge
+
+git remote show origin
+
+
+git remote [Lists remote repos](https://git-scm.com/docs/git-remote)
+
+git remote -v [List remote repos verbosely](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt--v)
+
+git remote show <name> [Describes a single remote repo](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-emshowem)
+
+git remote update [Fetches the most up-to-date objects](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-emupdateem)
+
+git fetch [Downloads specific objects](https://git-scm.com/docs/git-fetch)
+
+git branch -r [Lists remote branches](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--r); can be combined with other branch arguments to manage remote branches
+
+git push -u origin branchname #create and push a new branch to upstream
+
 <br>
+
+---
+git rebase -i HEAD~3 #rebase 3 commits back 
+
+---
+
+Fast-forward merge
+
+Implicit merge
+
+Explicit merge
+
+Squash on merge
 
 ---
 HEAD is an alias to represetn the currently checked-out snapshot of your project
