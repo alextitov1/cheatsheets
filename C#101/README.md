@@ -1,48 +1,19 @@
+https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/tutorials/hello-world
+
+https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
+
 C# in Depth 4th edition - Jon Skeet
 
-data types:
-## Array - 
-```
-string[] ar = new string[10];
-ar.Length - размерность
 
-int[,] ar2 = new int[10,20] // двухмерный массив 10 на 20
+# C# and .Net versions
 
-```
-## List
-```C#
-var l = new List<int> (new [] {1,2,3,4,5});
-
-l.Add(1000); // Append the list
-
-l.Insert(2,100); // insert to 2nd position
-
-l.Remove(3); // remove first 3
-l.RemoveAt(3); // remove element index 3
-l.RemoveAll(x => x == 3); // remove all 3
-l.RemoveRange(2,3)
-l.AddRange(new[] {88, 333, 1123123});
-l.Clear();
-```
-## ArrayList - Список из разнотипных элементов
-
-```C#
-var f = new ArrayList();
-temp = (int)MyArryList[n];
-
-```
-
-## LinkedList
-
-```C#
-val ll = new LinkedList<int>();
-
-ll.AddLast(1);
-ll.AddFirst(3);
-
-var last = ll.AddLast(4);
-ll.AddBefore(last, 8);
-
-````
-
-## Collections
+| Target framework | version | C# language version default |
+|------------------|---------|-----------------------------|
+| .NET             | 6.x     | C# 10                       |
+| .NET             | 5.x     | C#  9.0                     |
+| .NET Core        | 3.x     | C#  8.0                     |
+| .NET Core        | 2.x     | C#  7.3                     |
+| .NET Standard    | 2.1     | C#  8.0                     |
+| .NET Standard    | 2.0     | C#  7.3                     |
+| .NET Standard    | 1.x     | C#  7.3                     |
+| .NET Framework   | all     | C#  7.3                     |
