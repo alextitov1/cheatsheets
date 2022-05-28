@@ -18,8 +18,10 @@ Console.WriteLine($"My friends are {firstFriend} and {secondFriend}");
 
 
 ```C#
+str[..(strWight - 2)]
 ```
 ```C#
+var str = new String('+', tableWidth)
 ```
 ```C#
 ```

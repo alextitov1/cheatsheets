@@ -8,15 +8,15 @@ namespace array_and_list
 {
     class Program
     {
-        static void PrintResults(List<int> PList, string CollType, long IniTtime, long SearchNTime, long SearchMult, int n = 10)
+        static void PrintResults(List<int> pList, string collType, long iniTtime, long searchNTime, long searchMult, int n = 10)
         {
-            Console.WriteLine($"Resulet for {CollType}");
-            Console.WriteLine($"Init time = {IniTtime} ms, Search of n element time = {SearchNTime} ms, Search for multipliers of 777 = {SearchMult} ms");
+            Console.WriteLine($"Resulet for {collType}");
+            Console.WriteLine($"Init time = {iniTtime} ms, Search of n element time = {searchNTime} ms, Search for multipliers of 777 = {searchMult} ms");
             Console.WriteLine($"Fist {n} multipliers of 777");
             int counter = 0;
-            while ((PList.Count >= counter) && (n >= counter))
+            while ((pList.Count >= counter) && (n >= counter))
                 {
-                Console.Write(PList[counter] + " ");
+                Console.Write(pList[counter] + " ");
                 counter++;
                 }
             Console.WriteLine("...\n");
@@ -32,7 +32,6 @@ namespace array_and_list
             var MyLinkedList = new LinkedList<int>();
             var elements = 1000000;
             var n = 496753;
-
 
 ////////////List////////////////////////////////////////////////////////////////////////////////
             // fill the list
@@ -61,7 +60,6 @@ namespace array_and_list
 
 ////////////ArrayList////////////////////////////////////////////////////////////////////////////////
             // fill the ArrayList
-            Console.WriteLine("ArrayList:");
             stopWatch.Restart();
             for (int i = 0; i < elements; i++)
             {

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "array_and_list", "array_and_list\array_and_list.csproj", "{3872503B-629F-401E-B262-622D4A88FDBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tables", "tables\tables.csproj", "{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +32,17 @@ Global
 		{3872503B-629F-401E-B262-622D4A88FDBC}.Release|x64.Build.0 = Release|Any CPU
 		{3872503B-629F-401E-B262-622D4A88FDBC}.Release|x86.ActiveCfg = Release|Any CPU
 		{3872503B-629F-401E-B262-622D4A88FDBC}.Release|x86.Build.0 = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|x64.Build.0 = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Debug|x86.Build.0 = Debug|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|x64.ActiveCfg = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|x64.Build.0 = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{F687806E-0E85-4D5B-AAB5-09EA98E6E9E0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

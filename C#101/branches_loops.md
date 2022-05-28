@@ -5,6 +5,7 @@
 
 [Conditional operators](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator)
 
+## if
 ```C#
 classify = (input >= 0) ? "nonnegative" : "negative";
 ```
@@ -40,6 +41,27 @@ else
     Console.WriteLine("Or the first number is not equal to the second");
 }
 ```
+## case
+```C#
+switch (i)
+{
+	case 1: //top border
+	case var value1 when value1 == n * 2: //intermediate border
+	case var value2 when value2 == n * 4: //intermediate border2
+		Console.WriteLine(new String('+', tableWidth));
+		break;
+	case var value when value == n: //text string (String1)
+		Console.WriteLine('+' + new string(' ', n - 1) + textString + new string(' ', n - 1) + '+');
+		break;
+	case var value when value > n * 2 && value < n * 4: //String2
+		Console.WriteLine('+' + String2(i % 2, tableWidth) + '+');
+		break;
+	default:
+		Console.WriteLine('+' + new string(' ', tableWidth - 2) + '+'); //blank strings (String1)
+		break;
+}
+```
+
 # Loops
 ```C#
 int counter = 0;
