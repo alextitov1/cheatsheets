@@ -1,8 +1,16 @@
 # dotnet cli
 
+## list install versions
 ```console
 dotnet --list-sdks
 dotnet --list-runtimes
+```
+
+## add project to existing solution
+
+```sh
+dotnet new console --use-program-main --output newProjectDir --framework net6.0 // create a new project
+dotnet sln OtusLABs.sln add stack/stack.csproj // add a project to the solution
 ```
 
 ```sh
