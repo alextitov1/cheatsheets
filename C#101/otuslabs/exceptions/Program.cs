@@ -14,7 +14,7 @@ namespace tables
             }
             catch (Exception)
             {
-                Console.WriteLine("something went wrong, Calculator will be closedw3essssssssssssssssss");
+                Console.WriteLine("something went wrong, Calculator will be closed");
             }
         }
         static void Calculate()
@@ -50,7 +50,7 @@ namespace tables
                 {
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"integer overflow occured, max result is {int.MaxValue}");
+                    Console.WriteLine($"integer overflow occurred, max result is {int.MaxValue}");
                 }
                 finally
                 {
@@ -86,7 +86,7 @@ namespace tables
                         res = Div(res, lTerm);
                         break;
                     default:
-                        throw new GreenException($"opreation {lSymbol} ins't supported");
+                        throw new GreenException($"operation {lSymbol} ins't supported");
                 }
             }
             if (res == 13) throw new GreenException($"result is thirteen");
