@@ -29,6 +29,7 @@ namespace stack
             //Optional task 1
             var s1 = new Stack("a", "b", "c");
             s1.Merge(new Stack("1", "2", "3"));
+
             Console.WriteLine($"size = {s1.Size}, Top = '{s1.Top}'");
 
             //Optional task 2
@@ -37,54 +38,61 @@ namespace stack
         }
     }
 
-
-
     public class Stack
     {
         // fields
-        //private List<string> _stack;
-        private StackItem _stack;
+        //private List<StackItem> _items;
+        //private StackItem _stack;
         // contructs
 
         public Stack(params string[] args)
         {
-            //    _stack = new List<string>();
-            _stack = new StackItem();
-            foreach (var item in args)
+            Size = 0;
+            foreach (var value in args)
             {
-                _stack.Add(item);
+                Add(value);
             }
         }
+
+        private StackItem _top;
+
         //Properties
-        public int Size => _stack.Count;
+        public int Size { get; private set; }
 
         public string Top
         {
             get
             {
-                if (_stack.Count > 0)
+                if (_top != null)
                 {
-                    return _stack.Last();
+                    return _top.Value;
                 }
                 return null;
             }
         }
+
         // Methods
         public string Pop()
         {
-            var deleted = Top;
-
             if (Top == null)
             {
                 throw new Exception("the stack is empty");
             }
-            _stack.RemoveAt(_stack.Count - 1);
-            return deleted;
+
+            var deletedValue = _top.Value;
+
+            _top = _top.Previous;
+            Size--;
+
+            return deletedValue;
         }
 
         public void Add(string element)
         {
-            _stack.Add(element);
+            StackItem last = _top;
+            var newItem = new StackItem(last, element);
+            _top = newItem;
+            Size++;
         }
 
         public static Stack Concat(params Stack[] args)
@@ -99,35 +107,26 @@ namespace stack
 
         private class StackItem
         {
-            private List<string> _stackitem;
-            //constructors
-            public StackItem()
-            {
-                _stackitem = new List<string>();
-            }
-            //Properties
-            public int Count => _stackitem.Count;
+            public string Value { get; private set; }
 
-            //Methods
-            public string Last() => _stackitem.Last();
-            public void Add(string item)
+            public StackItem Previous { get; private set; }
+
+            public StackItem(StackItem previous, string value)
             {
-                _stackitem.Add(item);
-            }
-            public void RemoveAt(int index)
-            {
-                _stackitem.RemoveAt(index);
+                Previous = previous;
+                Value = value;
             }
         }
-}
+    }
 
     public static class StackExtensions
     {
         public static void Merge(this Stack stack, Stack newStack)
-        { 
-            for (var item = newStack.Size; item > 0; item--)
+        {
+            var num = newStack.Size;
+            for (var item = num; item > 0; item--)
             {
-            stack.Add(newStack.Pop());
+                stack.Add(newStack.Pop());
             }
         }
 
