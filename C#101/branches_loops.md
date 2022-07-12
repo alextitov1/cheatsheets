@@ -63,6 +63,7 @@ switch (i)
 ```
 
 # Loops
+## while
 ```C#
 int counter = 0;
 while (counter < 10)
@@ -71,6 +72,7 @@ while (counter < 10)
   counter++;
 }
 ```
+## do
 ```C#
 int counter = 0;
 do
@@ -79,6 +81,7 @@ do
   counter++;
 } while (counter < 10);
 ```
+## foraech
 ```C#
 var names = new List<string> { "<name>", "Ana", "Felipe" };
 foreach (var name in names)
@@ -86,5 +89,11 @@ foreach (var name in names)
   Console.WriteLine($"Hello {name.ToUpper()}!");
 }
 ```
+
+## for
 ```C#
+for (int i = 0; i <= 10; i += 2) 
+{
+  Console.WriteLine(i);
+}
 ```
