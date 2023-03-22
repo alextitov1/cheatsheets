@@ -1,34 +1,11 @@
 
-Pipelines - specify the steps that need to run to get the result you want
+# git
 
-www.travis.com
-
-Additional Tools
-
-Check out the following links for more information:
-
-    https://arp242.net/diy.html 
-
-    https://help.github.com/en/articles/closing-issues-using-keywords
-
-    https://help.github.com/en/articles/setting-guidelines-for-repository-contributors 
-
-    https://www.infoworld.com/article/3271126/what-is-cicd-continuous-integration-and-continuous-delivery-explained.html
-
-    https://stackify.com/what-is-cicd-whats-important-and-how-to-get-it-right/
-
-    https://docs.travis-ci.com/user/tutorial/
-
-    https://docs.travis-ci.com/user/build-stages/
-
+## git log
 
 diff -u
 patch
 
-# git
-The `.git` directory contains all the changes and their history and the working tree contains the current versions of the files.
-
-git init
 
 git status
 
@@ -49,17 +26,21 @@ git show fc1009896cd27f3c223af528e79b8521f1c84a21 - shows commint info
 git diff  (= diff -u)
 git diff --staged
 
+## git add
 
-## adding
+```sh
 git add -p # review the changes befor stagign them
 
 git commit -a # to stage any changes to tracked files
+```
 
-## Removing
+## git rm (Removing)
 
+```sh
 git rm filename + git commit
 
 git mv filename
+```
 
 ## Undoing
 
@@ -85,7 +66,7 @@ git revert "hash .. " # rever any commit
 
 `git branch somename` - create a branch, but not swithcing to the branch
 
-`git checkout branchname` - change a branch 
+`git checkout branchname` - change a branch
 
 `git branch -d branchname` - delete a branch
 
@@ -106,8 +87,7 @@ lastly
 
 git merge --abort #will cancell a merge
 
-
-git fetch 
+git fetch
 
 git pull = git fetch + git merge
 
@@ -175,4 +155,27 @@ https://thoughtbot.com/blog/5-useful-tips-for-a-better-commit-message
 
 git rebase -i HEAD~3 # squash last 3 commits
 
+# Ssh-agent and Keychain
 
+## generate a new ssh key pair
+
+```sh
+ssh-keygen -t rsa -b 4096 -C "comment" -f ~/.ssh/id_rsa
+# assiminng you will specify a passphrase
+```
+
+## add the passphrase to the keychain
+
+```sh
+ssh-add --apple-use-keychain ~/.ssh/id_rsa
+```
+
+## Configure SSH-agent to always use the keychain
+
+in the `.ssh/config` file add the following
+
+```sh
+Host * # ssh client will use the key for all hosts
+    UseKeychain yes # this is the important line
+    IdentityFile ~/.ssh/id_rsa
+```
