@@ -1,3 +1,6 @@
+# Container
+A container is a set of one or more processes that are isolated from the rest of the system.
+
 # container engine:
   * runc
   * crio
