@@ -87,3 +87,4 @@ nsenter -t <pid> -n
 
 [Podman Troubleshooting](https://github.com/containers/podman/blob/v4.2.0/troubleshooting.md)
 
+[namespaces](https://www.redhat.com/sysadmin/container-namespaces-nsenter)
