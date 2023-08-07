@@ -24,7 +24,7 @@ kubectl cluster-info
 retrieves information about resources in the selected project
 ```sh
 oc get clusteroperator # [-o yaml | json]
-kubectl get all
+kubectl get all --show-kind
 kubectl get pods -o wide
 kubectl get pods \
 -o custom-columns=PodName:".metadata.name",\
@@ -42,6 +42,12 @@ kubectl explain pods.spec
 provides detailed information about a `given resource`
 ```sh
 kubectl describe mysql-openshift-1-glgrp
+```
+
+#### `logs`
+> Container logs are the standard output (stdout) and standard error (stderr) output of a container
+```sh
+kubectl logs mysql-kd13 -c container-name
 ```
 
 #### Other commands
