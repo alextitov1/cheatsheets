@@ -4,10 +4,6 @@
 	"name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
-	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/flexwie/devcontainer-features/op:1": {}
-	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
