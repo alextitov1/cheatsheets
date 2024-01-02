@@ -1,0 +1,14 @@
+FROM quay.io/almalinuxorg/9-base:latest
+
+RUN useradd vscode
+
+RUN dnf install -y \
+    git \
+    jq \
+    wget \
+    yum-utils \
+    util-linux-user \
+    zsh && \
+    chsh -s /bin/zsh && \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+    python3 -m ensurepip --upgrade

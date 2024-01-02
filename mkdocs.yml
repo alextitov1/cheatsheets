@@ -1,0 +1,11 @@
+site_name: Cheatsheets
+site_url: https://cheat.titov.spb.ru
+nav:
+  - Home: index.md
+  - Content:
+    - 'Ansible': ansible/index.md
+    - 'Containers': container/index.md
+  # - About: ../README.md
+  # - Ansible: '/ansible/'
+docs_dir: 'docs'
+theme: readthedocs
