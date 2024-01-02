@@ -5,7 +5,11 @@ nav:
   - Content:
     - 'Ansible': ansible/index.md
     - 'Containers': container/index.md
-  # - About: ../README.md
-  # - Ansible: '/ansible/'
+    - 'Git': git/index.md
+    - 'K8S': k8s/index.md
+    - 'Linux': linux/index.md
+  - Dev:
+    - 'C#': C#101/index.md
+
 docs_dir: 'docs'
 theme: readthedocs

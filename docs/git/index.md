@@ -1,3 +1,4 @@
+[use cases](usecases.md)
 
 # git
 

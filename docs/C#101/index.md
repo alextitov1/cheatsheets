@@ -1,6 +1,26 @@
-https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/tutorials/hello-world
+# Links
+[Tour-of-csharp](https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/)
 
-https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
+[Branches and Loops](branches_loops.md)
+
+[Collections](collections.md)
+
+[Conditional operators](conditional-operator.md)
+
+[Console](console.md)
+
+[Dotnet cli](dotnet_cli.md)
+
+[Exceptions](exceptions.md)
+
+[Interfaces](interfaces.md)
+
+[OOP](OOP.md)
+
+[strings and chars](strings_n_char.md)
+
+[variables.md](variables.md)
+
 
 C# in Depth 4th edition - Jon Skeet
 
