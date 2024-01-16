@@ -1,0 +1,62 @@
+# Ansible Collections
+
+## ansible.cfg
+ansible.cfg
+```ini
+[defaults]
+collections_paths = ~/.ansible/collections:/usr/share/ansible/collections.
+```
+
+## Install collection
+
+By default ansible-galaxy installs the collections in the first directory that the collections_paths directive points to
+
+```sh
+ansible-galaxy collection install community.crypto
+ansible-galaxy collection install /tmp/community-dns-1.2.0.tar.gz
+
+ansible-galaxy collection install \
+  http://www.example.com/redhat-insights-1.0.5.tar.gz
+
+ansible-galaxy collection install \
+  git@github.com:ansible-collections/community.mysql.git \
+  -p ~/myproject/collections/
+
+ansible-galaxy collection install -r requirements.yml
+```
+
+### Example of collections/requirements.yml
+
+collections/requirements.yml
+```yml
+---
+collections:
+  - name: community.crypto
+
+  - name: ansible.posix
+    version: 1.2.0
+
+  - name: /tmp/community-dns-1.2.0.tar.gz
+
+  - name: http://www.example.com/redhat-insights-1.0.5.tar.gz
+
+  - name: git@github.com:ansible-collections/community.mysql.git
+```
+
+### Configuring Collection Sources
+
+By default ansible-galaxy uses https://galaxy.ansible.com to download collections.
+
+ansible.cfg
+```ini
+[galaxy]
+server_list = automation_hub, galaxy
+
+[galaxy_server.automation_hub]
+url=https://console.redhat.com/api/automation-hub/
+auth_url=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+token=draz...Usnx
+
+[galaxy_server.galaxy]
+url=https://galaxy.ansible.com/
+```
