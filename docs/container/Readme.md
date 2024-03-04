@@ -3,14 +3,17 @@ A container is a set of one or more processes that are isolated from the rest of
 
 # Container runtime
 A `container runtime` is a lower-level software component, is responsible for the actual running and lifecycle management of containers. It interacts with the OS to manage the lower-level aspects of container management, such as cgroups, namespaces, and SELinux.
-  * runc (lightweight, portable container runtime) - used by docker
-  * cri-o (container runtime interface) - used by kubernetes
+
+Examples:
+* runc (lightweight, portable container runtime) - used by docker
+* cri-o (container runtime interface) - used by kubernetes
 
 # Container engine
 A `container engine` is a higher-level software that processes user requests, including command line options and image pulls. The container engine uses a `container runtime`, also called a lower-level container runtime, to run and manage the components required to deploy and operate containers.
+
 Examples:
-  * docker
-  * podman
+* docker
+* podman
 
 # container management:
   * kubernetes
