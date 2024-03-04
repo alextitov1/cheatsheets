@@ -1,4 +1,4 @@
-# Podman/Docker OCI
+# Podman/Docker (OCI - Open Container Initiative)
 
 ## Get Help
 
@@ -12,7 +12,8 @@ Man pages are available for each command. For example:
 man podman-run
 man podman-build
 ```
-## Basic commands
+
+## Basic command examples
 
 Run = Create + Start
 ```sh
@@ -21,17 +22,17 @@ podman run ...
 podman start ...
 ```
 
-**podman stop** sends `SIGTERM` to the container and waits 10 sec, then send `SIGKILL`
+> `podman stop` sends `SIGTERM` to the container and waits 10 sec, then send `SIGKILL`
 ```sh
 podman stop $(podman ps -aq)
 ```
 
-**podman kill** sends `SIGKILL` to stop the container immediately
+> `podman kill` sends `SIGKILL` to stop the container immediately
 ```sh
 podman kill containerID
 ```
 
-**podman pause/unpuase** sends `SIGSTOP/SIGCONT` to the container to all processes in the container. it requires cgroups v2, it's not enabled on RHEL8 by default.
+> `podman pause/unpuase` sends `SIGSTOP/SIGCONT` to the container to all processes in the container. it requires cgroups v2, it's not enabled on RHEL8 by default.
 ```sh
 podman pause 4f2038c05b8c
 ```
@@ -39,7 +40,8 @@ podman pause 4f2038c05b8c
 ```sh
 # -i - interactive, -t - tty
 podman exec -it <ContainerId> /bin/sh
-
+```
+```sh
 podman ps -a
 
 podman logs containerID
@@ -51,6 +53,7 @@ podman pull
 podman image ls
 
 podman rm $(podman ps -aq)
+
 # remove all stopped containers
 podman rm --all
 
@@ -70,6 +73,7 @@ podman network --help
 podman network create example-net
 podman network ls
 podman network inspect example-net
+
 # port mapping
 podman port example-net
 
@@ -98,6 +102,7 @@ podman run -p 127.0.0.1:8075:80 my-app
 
 # List port mappings
 podman port my-app
+
 # --all option lists port mappings for all containers
 podman port --all
 
@@ -152,13 +157,14 @@ podman run --volume  /www:/var/www/html:ro ubi8/httpd-24:latest
 podman run --volume http-data:/var/www/html ubi8/httpd-24:latest
 ## Because Podman manages the volume, you do not need to configure SELinux permissions.
 ```
+
 Alternatively, you can use the `--mount` parameter
 ```sh
 --mount type=TYPE,source=/path/on/host,destination=/path/in/container,options=OPTIONS
 # type= bind | volume | tmpfs
 # options=ro | rw | z | Z
 ```
-Some application cannot use the default COW file system in a specific directory for performance reasons, but do not use persistence or data sharing. In this case, you can use the `tmpfs` mount type, which means that the data in mount is ephemeral but does not use the COW file system.
+Some application cannot use the default COW file system in a specific directory for performance reasons, but do not need persistence or data sharing. In this case, you can use the `tmpfs` mount type, which means that the data in mount is ephemeral but does not use the COW file system.
 
 ```sh
 podman run -e POSTGRESQL_ADMIN_PASSWORD=redhat --network lab-net \
