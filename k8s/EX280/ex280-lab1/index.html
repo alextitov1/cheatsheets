@@ -1,0 +1,504 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/k8s/EX280/ex280-lab1/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Subjects - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#subjects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Subjects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          Content
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Content" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Content
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../container/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        K8S
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Dev
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dev" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dev
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C%23101/" class="md-nav__link">
+        C#
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="subjects">Subjects</h1>
+<ul>
+<li>Create a project template that sets quotas, ranges, and network policies.</li>
+<li>Restrict access to the self-provisioners cluster role.</li>
+<li>Create groups and assign users to groups.</li>
+<li>Use role-based access control (RBAC) to grant permissions to groups.</li>
+</ul>
+<h1 id="lab1">Lab1</h1>
+<pre><code class="language-sh">oc login -u admin -p redhatocp https://api.ocp4.example.com:6443
+</code></pre>
+<h2 id="create-the-groups-with-the-specified-users">Create the groups with the specified users:</h2>
+<ul>
+<li>Group: <strong>Platform</strong>; Users: <strong>do280-platform</strong></li>
+<li>Group: <strong>presenters</strong>; Users: <strong>do280-presenter</strong></li>
+<li>Group: <strong>workshop-support</strong>; Users: <strong>do280-support</strong></li>
+</ul>
+<pre><code class="language-sh"># Create the workshop-support group
+oc adm groups new workshop-support
+oc adm groups add-users workshop-support do280-support
+
+# Create the presenters group
+oc adm groups new presenters
+oc adm groups add-users presenters do280-presenter
+
+# Create the platform group
+oc adm groups new platform
+oc adm groups add-users platform do280-platform
+
+</code></pre>
+<h2 id="the-platform-group-administers-the-cluster">The <code>platform</code> group administers the cluster.</h2>
+<h3 id="solution">Solution</h3>
+<p>Create a cluster role binding to assign the cluster-admin cluster role to the platform group.</p>
+<pre><code class="language-sh">oc adm policy add-cluster-role-to-group cluster-admin platform
+</code></pre>
+<h2 id="the-presenters-group-defines-the-people-who-deliver-the-workshops">The <code>presenters</code> group defines the people who deliver the workshops.</h2>
+<h2 id="the-workshop-support-group-maintains-the-needed-applications-to-support-the-workshops-and-the-workshop-presenters">The <code>workshop-support</code> group maintains the needed applications to support the workshops and the workshop presenters.</h2>
+<h2 id="ensure-that-only-users-from-the-following-groups-can-create-projects">Ensure that only users from the following groups can create projects:</h2>
+<ul>
+<li>platform</li>
+<li>presenters</li>
+<li>workshop-support</li>
+</ul>
+<h2 id="an-attendee-must-not-be-able-to-create-projects-because-this-exercise-requires-steps-that-restart-the-kubernetes-api-server-this-configuration-must-persist-across-api-server-restarts">An attendee must not be able to create projects. Because this exercise requires steps that restart the Kubernetes API server, this configuration must persist across API server restarts.</h2>
+<h2 id="the-workshop-support-group-requires-the-following-roles-in-the-cluster">The workshop-support group requires the following roles in the cluster:</h2>
+<ul>
+<li>
+<p>The admin role to administer projects</p>
+</li>
+<li>
+<p>A custom role that is provided in the groups-role.yaml file You must create this custom role to enable support members to create workshop groups and to add workshop attendees.</p>
+</li>
+</ul>
+<h3 id="solution_1">Solution</h3>
+<p>Grant to the <code>workshop-support</code> group the <code>admin</code> and the custom <code>manage-groups</code> cluster roles. You must create the <code>manage-groups</code> custom cluster role from the <code>groups⁠-⁠role⁠.⁠yaml</code> file.</p>
+<h2 id="the-platform-group-must-be-able-to-administer-the-cluster-without-restrictions">The <code>platform</code> group must be able to administer the cluster without restrictions.</h2>
+<h2 id="the-workshop-support-group-must-perform-the-following-tasks-for-the-workshop-project">The workshop-support group must perform the following tasks for the workshop project:</h2>
+<ul>
+<li>Create a workshop-specific attendees group.</li>
+<li>Assign the edit role to the attendees group.</li>
+<li>Add users to the attendees group. </li>
+</ul>
+<h2 id="workshop-self-service-specification">Workshop self-service specification:</h2>
+<ul>
+<li>Each workshop must be hosted in an independent project.</li>
+<li>
+<p>All resources that the cluster creates with a new workshop project must have the <code>workshop</code> name for grading purposes.</p>
+</li>
+<li>
+<p>Each workshop must enforce the following maximum constraints:</p>
+</li>
+<li>The project uses up to 2 CPUs.</li>
+<li>The project uses up to 1 Gi of RAM.</li>
+<li>The project requests up to 1.5 CPUs.</li>
+<li>
+<p>The project requests up to 750 Mi of RAM.</p>
+</li>
+<li>
+<p>Each workshop must enforce constraints to prevent an attendee's workload from consuming all the allocated resources for the workshop:</p>
+</li>
+<li>A workload uses up to 750m CPUs.</li>
+<li>
+<p>A workload uses up to 750 Mi.</p>
+</li>
+<li>
+<p>Each workshop must have a resource specification for workloads:</p>
+</li>
+<li>A default limit of 500m CPUs.</li>
+<li>A default limit of 500 Mi of RAM.</li>
+<li>A default request of 0.1 CPUs.</li>
+<li>A default request of 250 Mi of RAM.</li>
+</ul>
+<p>You can use the templates that are provided in the quota.yaml, limitrange.yaml, and networkpolicy.yaml files.</p>
+<ul>
+<li>Each workshop project must have this additional default configuration:</li>
+<li>A local binding for the presenter group to the admin cluster role with the workshop name</li>
+<li>The workshop=project_name label to help to identify the workshop workload</li>
+<li>
+<p>Must accept traffic only from within the same workshop or from the ingress controller.</p>
+</li>
+<li>
+<p>As the <code>do280-presenter</code> user, you must create a workshop with the do280 name.</p>
+</li>
+<li>
+<p>As the <code>do280-support</code> user, you must create the do280-attendees group with the do280-attendee user.</p>
+</li>
+<li>
+<p>Use the registry.ocp4.example.com:8443/redhattraining/hello-world-nginx:v1.0 image, which listens on the 8080 port, to simulate a workshop workload.</p>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>
