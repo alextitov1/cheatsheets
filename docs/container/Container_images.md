@@ -139,6 +139,12 @@ Nexus - the artifact repository
 podman pull dockette/nexus:latest
 ```
 
+Docker registry
+```sh
+# can proxy other registries
+docker run -d -p 5000:5000 --name registry docker.io/registry:latest
+```
+
 # Build
 
 ## Basic commands

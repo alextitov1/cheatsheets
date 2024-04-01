@@ -37,3 +37,4 @@ Developed in 2005 and introduced to containers circa 2014, **Seccomp** limits ho
 
 ## SELinux
 Security-Enhanced Linux (SELinux) is a **mandatory access control system** for processes. Linux kernel uses SELinux to protect processes from each other and to protect the host system from its running processes. Processes run as a confined SELinux type that has limited access to host system resources.
+

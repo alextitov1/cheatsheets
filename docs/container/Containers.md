@@ -1,5 +1,20 @@
 # Podman/Docker (OCI - Open Container Initiative)
 
+## conmon
+
+`conmon` is a monitoring tool for OCI containers. It is used by Podman and CRI-O to monitor the state of containers.
+```sh
+podman run -d nginx
+ps -ef | grep conmon
+runc list
+```
+
+## kaniko
+
+kaniko vs buildah
+
+
+
 ## Get Help
 
 Inline help
