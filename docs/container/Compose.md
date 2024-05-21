@@ -1,5 +1,9 @@
 # Compose
 
+## Compose spec
+
+https://github.com/compose-spec/compose-spec/blob/master/spec.md
+
 ## Basic commands
 ```sh
 podman-compose up
