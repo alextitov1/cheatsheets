@@ -77,5 +77,7 @@ mount /share
 
 ## Links
 
+[NFS Performance tuning](https://cromwell-intl.com/open-source/performance-tuning/nfs.html)
+
 [NFS and Smb exports of the same directory](https://access.redhat.com/solutions/39855)
 
