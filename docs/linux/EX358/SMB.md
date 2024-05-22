@@ -77,8 +77,13 @@ firewall-cmd --reload
 
 # Client
 
+```
+dnf install cifs-utils
+```
+
 ```sh
 mount -o username=operator1 //host.example.com/devcode /mnt
+mount -t cifs //malinka3.lan/transmission /mnt/malinka3-smb/
 ```
 
 /ext/fstab
