@@ -30,8 +30,6 @@ VPC Routers are highly available devices and it occupies the .1 addressing space
 ## Route Tables
 You can influence the routing for your VPC by editing the main route table or creating custom route tables for each of your subnets.
 
-
-
 ## Internet Gateway(IGW)
 - public to private IP address mapping 
   * Resource must have a public IP.
