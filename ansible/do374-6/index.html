@@ -1,0 +1,793 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/ansible/do374-6/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Controlling Privilege Escalation - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#controlling-privilege-escalation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Controlling Privilege Escalation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation-by-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation by Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#privilege-escalation-in-play-task-block-and-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege Escalation in Play, Task, Block and Role
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-privilege-escalation-with-connection-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listing Privilege Escalation with Connection Variables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="controlling-privilege-escalation">Controlling Privilege Escalation</h1>
+<p>Privilege escalation directives:
+* become
+* become_user
+* become_method
+* become_flags</p>
+<h2 id="privilege-escalation-by-configuration">Privilege Escalation by Configuration</h2>
+<p>ansible.cfg</p>
+<pre><code class="language-ini">[privilege_escalation]
+become = true
+become_user = true
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Command-line option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>become</td>
+<td>--become or -b</td>
+</tr>
+<tr>
+<td>become_method</td>
+<td>--become-method=BECOME_METHOD</td>
+</tr>
+<tr>
+<td>become_user</td>
+<td>--become-user=BECOME_USER</td>
+</tr>
+<tr>
+<td>become_password</td>
+<td>--ask-become-pass or -k</td>
+</tr>
+</tbody>
+</table>
+<h2 id="privilege-escalation-in-play-task-block-and-role">Privilege Escalation in Play, Task, Block and Role</h2>
+<pre><code class="language-yml">- name: Example play with one role
+  hosts: localhost
+  roles:
+    - role: role-name
+      become: true
+</code></pre>
+<h2 id="listing-privilege-escalation-with-connection-variables">Listing Privilege Escalation with Connection Variables</h2>
+<blockquote>
+<p>Connection variables override the become settings in the configuration file, as well as in plays, tasks, blocks, and roles.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Connection variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>become</td>
+<td>ansible_become</td>
+</tr>
+<tr>
+<td>become_method</td>
+<td>ansible_become_method</td>
+</tr>
+<tr>
+<td>become_user</td>
+<td>ansible_become_user</td>
+</tr>
+<tr>
+<td>become_password</td>
+<td>ansible_become_pass</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-yml">webservers:
+  hosts:
+    servera.lab.example.com:
+    serverb.lab.example.com:
+  vars:
+    ansible_become: true
+</code></pre>
+<h1 id="controlling-task-execution">Controlling Task Execution</h1>
+<blockquote>
+<p>In a play, Ansible always runs the tasks from roles, called by the <code>roles</code> statement, before the tasks that you define under the <code>tasks</code> section.</p>
+</blockquote>
+<h2 id="importing-or-including-roles-as-a-task">Importing or Including Roles as a Task</h2>
+<ul>
+<li><code>import_role</code>  - statically imports a role</li>
+<li><code>include_role</code> - dynamically includes a role</li>
+</ul>
+<h2 id="pre-and-post-tasks">Pre- and Post-tasks</h2>
+<ul>
+<li><code>pre_tasks</code> is a tasks section that runs before the <strong>roles</strong> section.</li>
+<li><code>post_tasks</code> is a tasks section that runs after the <strong>task</strong> section and <strong>handlers</strong> notified by tasks</li>
+</ul>
+<h2 id="reviewing-the-order-of-execution">Reviewing the Order of Execution</h2>
+<p>Ansible runs the play sections in the following order:</p>
+<ul>
+<li><code>pre_tasks</code></li>
+<li>Handlers that are notified in the <code>pre_tasks</code> section</li>
+<li><code>roles</code></li>
+<li><code>tasks</code></li>
+<li>Handlers that are notified in the <code>roles</code> and <code>tasks</code> sections</li>
+<li><code>post_tasks</code></li>
+<li>Handlers that are notified in the <code>post_tasks</code> section</li>
+</ul>
+<blockquote>
+<p>To immediately run any handlers that have been notified by a particular task in the play, add a task that uses the meta module with the <code>flush_handlers</code> parameter. This enables you to define specific points during task execution when all notified handlers are run.</p>
+</blockquote>
+<pre><code class="language-yml">---
+- name: Updating the application configuration and cache
+  hosts: app_servers
+
+  tasks:
+    - name: Deploying the configuration file
+      ansible.builtin.template:
+        src: api-server.cfg.j2
+        dest: /etc/api-server.cfg
+      notify: Restart api server
+
+    - name: Running all notified handlers
+      ansible.builtin.meta: flush_handlers
+
+    - name: Asking the API server to rebuild its internal cache
+      ansible.builtin.uri:
+        url: &quot;https://{{ inventory_hostname }}/rest/api/2/cache/&quot;
+        method: POST
+        force_basic_auth: true
+        user: admin
+        password: redhat
+        body_format: json
+        body:
+          type: data
+          delay: 0
+        status_code: 201
+
+  handlers:
+    - name: Restart api server
+      ansible.builtin.service:
+        name: api-server
+        state: restarted
+        enabled: true
+</code></pre>
+<h1 id="listening-to-handlers">Listening to Handlers</h1>
+<p>A task can notify multiple handlers in at least two ways:
+* It can notify a list of handlers individually by name.
+* It can notify one name for which multiple handlers are configured to listen.</p>
+<pre><code class="language-yaml">---
+- name: Testing the listen directive
+  hosts: localhost
+  gather_facts: false
+  become: false
+
+  tasks:
+    - name: Trigger handlers
+      ansible.builtin.debug:
+        msg: Trigerring the handlers
+      notify: My handlers
+      changed_when: true
+
+  handlers:
+    # Listening to the &quot;My handlers&quot; event
+    - name: Listening to a notification
+      ansible.builtin.debug:
+        msg: First handler was notified
+      listen: My handlers
+
+    # As an example, this handler is also triggered because
+    # its name matches the notification, but no two handlers
+    # can have the same name.
+    - name: My handlers
+      ansible.builtin.debug:
+        msg: Second handler was notified
+</code></pre>
+<h1 id="controlling-the-order-of-host-execution">Controlling the Order of Host Execution</h1>
+<blockquote>
+<p>By default, Ansible runs the play against hosts in the order in which they are listed in the inventory. You can change that order on a play-by-play basis by using the <code>order</code> directive.</p>
+</blockquote>
+<p>This playbook alphabetically sorts the hosts in the <code>web_servers</code> group before running the task:</p>
+<pre><code class="language-yml">---
+- name: Testing host order
+  hosts: web_servers
+  order: sorted  # inventory(default) | sorted | reverse_sorted | reverse_inventory | shuffle
+
+  tasks:
+    - name: Creating a test file in /tmp
+      ansible.builtin.copy:
+        content: 'This is a sample file'
+        dest: /tmp/test.out
+</code></pre>
+<h1 id="tagging-ansible-resources">Tagging Ansible Resources</h1>
+<p>Tags are available for the following resources:
+* plays
+* tasks - the most common ways that tags are used
+* role
+* blocks</p>
+<p>Options:
+* <code>--tags</code>
+* <code>--skip-tags</code> - skips the tasks that are tagged with the specified tags
+* <code>--list-tags</code> - lists all tags that are defined in the play</p>
+<h2 id="special-tags">Special tags</h2>
+<p><code>always</code> - a resource that is tagged with <code>always</code> is always run, regardless if it doesn't match the list of tags passed to the --tags option. The only exception is when it is explicitly skipped with <code>--skip-tags</code>.</p>
+<p><code>never</code> - a task that you tag with the <code>never</code> tag does not run, unless you run the playbook with the <code>--tags</code> option set to <code>never</code> or to one of the other tags associated with the task.</p>
+<p><code>tagged</code> - runs any resource with an explicit tag.</p>
+<p><code>untagged</code> - runs any resource that does not have an explicit tag.</p>
+<p><code>all</code> - runs all resources, regardless of their tags. This is default behavior of Ansible</p>
+<h1 id="optimizing-playbook-execution">Optimizing Playbook Execution</h1>
+<p>a way to measure playbook execution time:</p>
+<pre><code class="language-sh">time ansible-navigator run -m stdout  speed_facts.yml -i inventory
+</code></pre>
+<p>If <code>gathering facts</code> isn't run substitute with magic variables:</p>
+<ul>
+<li>ansible_facts['hostname'] or ansible_hostname - <code>inventory_hostname</code></li>
+<li>ansible_facts['nodename'] or ansible_nodename - <code>inventory_hostname_short</code></li>
+</ul>
+<h2 id="reusing-gathered-facts-with-fact-caching">Reusing Gathered Facts with Fact Caching</h2>
+<p>Ansible uses <code>cache plug-ins</code> to store gathered facts or inventory source data gathered by a play</p>
+<p>The <code>memory</code> cache plug-in is enabled by default</p>
+<p>This play book illustrates how cache works:</p>
+<pre><code class="language-yml">- name: Gather facts for everyone
+  hosts: all
+  gather_facts: true
+
+  # any tasks we might want for the first play
+  # if you do not have tasks, &quot;setup&quot; will still run
+
+- name: The next play, does not gather facts
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Show that we still know the facts
+      ansible.builtin.debug:
+        var: ansible_facts
+</code></pre>
+<p>Another way to use fact caching is to use <code>smart</code> gathering.
+When enabled, <code>smart</code> gathering gathers facts on each new host in a playbook run, but if the same host is used across multiple plays, then the host is not contacted for fact gathering again in the run.</p>
+<pre><code class="language-ini">[defaults]
+gathering=smart
+</code></pre>
+<h2 id="limiting-fact-gathering">Limiting Fact Gathering</h2>
+<pre><code class="language-yml">- name: A play that gathers some facts
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Collect only network-related facts
+      ansible.builtin.setup:
+        gather_subset:
+          - '!all'
+          - '!min'
+          - network
+          - hardware
+          - virtual
+          - ohai
+          - facter
+</code></pre>
+<h2 id="parallelism">Parallelism</h2>
+<pre><code class="language-ini">defaults]
+forks=100
+</code></pre>
+<p><code>-f</code> option can be used to override the default value</p>
+<h2 id="avoiding-loops-with-the-package-manager-modules">Avoiding Loops with the Package Manager Modules</h2>
+<h2 id="efficiently-copying-files-to-managed-hosts">Efficiently Copying Files to Managed Hosts</h2>
+<h2 id="using-templates">Using Templates</h2>
+<p>When used with a loop, the <code>ansible.builtin.lineinfile</code> module is inefficient and can be error-prone, use either the <code>ansible.builtin.template</code> or <code>ansible.builtin.copy</code> module instead.</p>
+<h2 id="enabling-pipelining">Enabling Pipelining</h2>
+<p>To run a task on a remote node, Ansible performs several SSH operations to copy the module and all its data to the remote node and run the module. To increase the performance of your playbook, you can activate the pipelining feature. With pipelining, Ansible establish fewer SSH connections.</p>
+<pre><code class="language-yml">---
+ansible-navigator:
+  ansible:
+    config: ./ansible.cfg
+
+  execution-environment:
+    image: ee-supported-rhel8:latest
+    pull-policy: missing
+    environment-variables:
+      set:
+        ANSIBLE_PIPELINING: true
+</code></pre>
+<p>Ansible does not use pipelining by default because the feature requires that the <code>requiretty sudo</code> option on the remote node be disabled.</p>
+<h2 id="profiling-playbooks-execution-with-callback-plug-ins">Profiling Playbooks Execution with Callback Plug-ins</h2>
+<p>Callback plug-ins extend Ansible by adjusting how it responds to various events. Some of these plug-ins modify the output of the command-line tools.</p>
+<p>ansible.cfg</p>
+<pre><code class="language-ini">[defaults]
+callbacks_enabled=timer, profile_tasks, cgroup_perf_recap
+</code></pre>
+<pre><code class="language-sh">ansible-navigator doc -t callback -l -m stdout
+
+ansible-navigator doc -t callback cgroup_perf_recap -m stdout
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
