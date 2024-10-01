@@ -50,4 +50,17 @@ modprobe -c
 
 to set a parameter permanently, add a line to */etc/modprobe.d/\<MEANINGFUL\>.conf*.
 
+```sh
+options st buffer_kbs=64 max_sg_segs=512
+
+options usb-storage quirks=0513:0132:w
+```
+
+# Kernel Module Documentation
+
+```sh
+dnf install kernel-doc
+
+/usr/share/doc/kernel-doc-VER/Documentation/admin-guide/kernel-parameters.txt
+
 ```
