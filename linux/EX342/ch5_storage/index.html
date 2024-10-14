@@ -1,0 +1,596 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/linux/EX342/ch5_storage/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Linux Storage - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-storage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux Storage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-file-system-vfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual File System (VFS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Mapper
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disk-schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Schedulers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-mapper-multipath" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device Mapper Multipath
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-scsi-mid-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SCSI Mid-layer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-level-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low-level Drivers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="linux-storage">Linux Storage</h1>
+<p><img alt="storage-stack" src="../pic/storage-stack.svg" title="Linux storage stack" /></p>
+<h2 id="virtual-file-system-vfs">Virtual File System (VFS)</h2>
+<p>The Virtual File System (VFS) provides supprt for standard POSIX system calls to read and write files. It implement system calls such as <code>open()</code>, <code>read()</code>, <code>write()</code>, <code>close()</code>, <code>stat()</code>, and <code>lseek()</code>.</p>
+<p>File system implemenentations such as XFS, ext4, FAT32, and others plugin to VFS as modules and so VFS provides a common abstraction layer for the data on those file systems.</p>
+<p>VFS maintains caches to improve performance, including an <em>inode cache</em>, <em>dentry cache</em>, <em>buffer cache</em>, and <em>page cache</em>.</p>
+<p><code>/proc/slabinfo</code> file records the memory usage of inode and directory caches.</p>
+<pre><code class="language-sh"># View VFS Memory Usage
+cat /proc/meminfo
+
+# Clear VFS caches
+echo 3 &gt; /proc/sys/vm/drop_caches
+</code></pre>
+<h2 id="file-systems">File Systems</h2>
+<p>File systems provide the logical structures for organizing and naming metada and data in storage.</p>
+<h2 id="device-mapper">Device Mapper</h2>
+<p>The device mapper creates mapping tables of blocks from one device layer to blocks in another logical device. Device mapper use is optional; you can directly format physical block devices with a file system without using it.</p>
+<p>Example: an LVM logical volume named <em>/dev/mapper/myvg-mylv1</em> is built from two physical volumes, <em>/dev/vdb1</em> and <em>/dev/vdb2</em>. When initially created with LVM utilities, the device mapper mapped the <em>/dev/vdb1</em> and <em>/dev/vdb2</em> physical block device partitions to the <em>/dev/dm-0</em> higher logical device.</p>
+<pre><code class="language-sh"># Use the dmsetup command to view the device mapper table
+dmsetup ls
+
+ls -l /dev/mapper/myvg1-mylv1
+
+dmsetup table /dev/mapper/myvg1-mylv1
+&gt; 0 1015808 linear 253:17 2048
+&gt; 1015808 1015808 linear 253:18 2048
+
+# The /dev/mapper/myvg1-mylv1 volume has two mappings. The first is a 1:1 linear mapping of the block device with major:minor number 253:17 to the first 1015808 blocks of /dev/mapper/myvg1-mylv1. The second is a 1:1 linear mapping of the block device with major:minor number 253:18 to the next 1015808 blocks of /dev/mapper/myvg1-mylv1, starting at block 1015808. The major:minor numbers 253:17 and 253:18 correspond to /dev/vdb1 and /dev/vdb2:
+
+ls -l /dev/vdb*
+&gt; brw-rw----. 1 root disk 253, 16 Sep 30 18:28 /dev/vdb
+&gt; brw-rw----. 1 root disk 253, 17 Sep 30 18:30 /dev/vdb1
+&gt; brw-rw----. 1 root disk 253, 18 Sep 30 18:30 /dev/vdb2
+</code></pre>
+<h2 id="disk-schedulers">Disk Schedulers</h2>
+<p>Disk schedulers are responsible for ordering the I/O requests that are submitted to a storage device. In RHEL8, block devices support only multi-queue scheduling. This enables block layer performance to scale with fast solid-state drives (SSDs) and multi-core CPUs.</p>
+<pre><code class="language-sh">dmesg | grep -i 'io scheduler'
+</code></pre>
+<ul>
+<li><strong>none</strong> - implements a first-in first-out (FIFO) scheduling algorithm.</li>
+<li><strong>mq-deadline</strong> - Sorts I/O requests into a read or write batch and schedules them for executuion in increasing logical block address (LBA) order. This scheduler is especially suitable where read operations are more frequent than write operations.</li>
+<li>
+<p><strong>kyber</strong> - Tunes itself to achieve a latency goal by calculating the latencyes of every I/O request that is submitted to the block I/O layer.</p>
+</li>
+<li>
+<p><strong>bfq</strong> - Ensures that a single application never uses all the bandwith. Focuses on providing low latency rather than achieving high throughput.</p>
+</li>
+</ul>
+<pre><code class="language-sh"># to determine the current scheduler
+cat /sys/block/sda/queue/scheduler
+&gt; [mq-deadline] kyber bfq none
+</code></pre>
+<h2 id="device-mapper-multipath">Device Mapper Multipath</h2>
+<p>Device mapper multipath (DM-Multipath) configures multiple I/O paths between servers and storage arrays so that they appear as a single device.</p>
+<h2 id="the-scsi-mid-layer">The SCSI Mid-layer</h2>
+<p>The SCSI mid-layer is a bridge between the SCSI targets that present storage devices and the host bus adapters or hardware interface card drivers that communicate with the storage devices. The block device drivers are the <strong>SCSI disk (sd)</strong> and the <strong>SCSI CDROM (sr)</strong> driver. The SCSI mid-layer also provides one <strong>SCSI driver for character-based tape devices (st)</strong> and one for generic <strong>SCSI devices such as scanners (sg)</strong>.</p>
+<p>All devices that can use or emulate the SCSI protocol can use the SCSI mid-layer. The mid-layer includes seemingly unrelated devices such as SATA devices, USB storage devices, and virtual machine disks. These devices are presented as SCSI devices and use appropriate device names, such as <strong>/dev/sda</strong>. Some storage devices bypass this layer. For example, the <strong>/dev/vd</strong><em> devices are paravirtualized devices that use the </em><em>virtio_blk</em>* driver, which does not emulate a SCSI protocol.</p>
+<h2 id="low-level-drivers">Low-level Drivers</h2>
+<p>Low-level drivers communicate with physical system hardware. Examples: SCSI drivers for Qlogic(qla2xxx), local SATA(libata) or USB(ahci). Paravirtualized drivers such as <em>virtio_blk</em> interact directly with the scheduler at the block layer.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>
