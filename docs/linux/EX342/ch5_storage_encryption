@@ -14,7 +14,7 @@ LUKS - Linux Unified Key Setup is a specification for block device encryption.
     ```
 
     * name is the name that the *device mapper* creates for the decrypted device.
-    * /dev/<device> is the device that is encrypted.
+    * /dev/\<device> is the device that is encrypted.
     * /path/to/keyfile is the path to the keyfile that is used to decrypt the device. If the last field is blank or set to none, then the user is prompted for the passphrase.
 
 1. The system decrypts the device, by using the passphrase from the user or the key file, and names the device */dev/mapper/name*, with the specified name in */etc/crypttab*.

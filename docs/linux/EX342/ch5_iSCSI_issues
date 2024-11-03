@@ -71,3 +71,95 @@ node.session.auth.password = <password>
 node.session.auth.username_in = <username>
 node.session.auth.password_in = <password>
 ```
+
+## iSCSI Initiator Issues
+
+### Network Issues
+
+```sh
+# check domain name
+dig server.lab.example.com
+
+# check connection to the target host (default 3260)
+ncat -v target_server_ip 3260
+
+# on the target host confirm the iSCSI service is listening on the port
+ss -tln | grep 3260
+
+# confirm that firewall is configured to allow iSCSI traffic
+firewall-cmd --list-all | grep 3260
+
+```
+
+### Login Issues
+
+If an initiator experiences an issue with logging in to an already discovered target, then the problem likely relates to access control or authentication.
+
+```sh
+# check (and correct) an initiator name
+cat /etc/iscsi/initiatorname.iscsi
+
+# restart the iscsid service (if necessary)
+systemctl restart iscsid
+```
+
+An initiator must be configured to use the authentication method that the target requires.
+
+```sh
+cat /etc/iscsi/iscsid.conf
+systemctl restart iscsid
+```
+
+To access the cause for login failure, execute the login in debug mode - `-d`, debug level 0-8 `-d8`
+
+```sh
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l -d8
+
+>> iscsiadm: updated 'node.session.auth.authmethod', 'None' => 'CHAP'
+```
+
+To modify existing settings, use the `iscsiadm` command with the `-o update` option
+
+```sh
+iscsiadm -m node -T iqn.2021-01.com.example.lab:target1 -o update -n node.session.auth.authmethod -v None [-p target_server[:port]]
+```
+
+To purge existing node
+
+```sh
+iscsiadm -m node -T iqn.2021-01.com.example.lab:iscsistorage -o delete [-p target_server[:port]]
+```
+
+To purge all nodes
+
+```sh
+iscsiadm -m node -o delete [-p target_server[:port]]
+```
+
+## Troubleshooting iSCSI
+
+```sh
+# verify that system discovered the iSCSI target
+iscsiadm -m node
+
+# verity iSCSI sessions
+iscsiadm -m session
+
+# login to the target
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l -d8
+
+# turn off CHAP authentication
+vi /etc/iscsi/iscsid.conf
+
+# clear cach /var/lib/iscsi/nodes
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -o delete
+systemctl restart iscsid
+
+# update initiator name
+vi /etc/iscsi/initiatorname.iscsi
+systemctl restart iscsid
+
+# try to login again
+
+```
