@@ -1,0 +1,165 @@
+# Resolving ISCSI Issues
+
+iSCSI - Internet Small Computer System Interface is a protocol that allows SCSI commands to be sent over a network. An alternative to Fibre Channel.
+
+![iSCSI block storage](./pic/block_storage_scsi_topologies.svg)
+
+* **initiator** - client that initiates the iSCSI connection.
+* **target** - server that provides the iSCSI storage.
+* **IQN** - iSCSI Qualified Name, a unique identifier for iSCSI devices.
+* **LUN** - Logical Unit Number, a unique identifier for a logical unit.
+* **ACL** - Access Control List, a list of initiators that are allowed to connect to a target.
+* **portal** - IP address and port number of the target.
+* **TPG** - Target Portal Group, a group of portals that are associated with a target.
+
+## Configuring iSCSI Initiator
+
+iSCSI initiator can be software or hardware-based.
+
+Configuring the sortwar iSCSI initiator requires installing the `iscsi-initiator-utils` package. This package includes the `iscsi` and `iscsid` services, and the `/etc/iscsi/iscsid.conf` and `/etc/iscsi/initiatorname.iscsi` configuration files.
+
+iSCSI initiator requires a unique iSCSI Qualified Name (IQN).
+
+The `/etc/iscsi/iscsid.conf` file contains the default settings for iSCSI targets.
+
+## Connecting to iSCSI Targets
+
+The iscsiadm utility, provided by the `iscsi-initiator-utils` package, is used to discover, log in to, and list targets.
+
+```sh
+# Discover iSCSI targets
+iscsiadm -m discovery -t st -p server.lab.example.com:3260
+> 172.25.250.X:3260,1 iqn.2021-10.com.example.lab:target1
+```
+
+```sh
+# Log in to an iSCSI target
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l
+```
+
+```sh
+# List iSCSI targets
+iscsiadm -m node
+> 172.25.250.X:3260,1 iqn.2021-10.com.example.lab:target1
+```
+
+When logged in to a target, the device appears locally on the client.
+
+```sh
+grep "Attached SCSI" /var/log/messages
+```
+
+During the discovery process, iscsiadm stores target information and settings in the `/var/lib/iscsi/nodes` directory.
+
+## Authentication Options
+
+iSCSI uses ACLs to control which targets and LUNs initiators can access.
+Use Challenge-Handshake Authentication Protocol (CHAP) to authenticate to force to provide a username and password before accessing LUNs.
+By default, CHAP is disabled.
+
+```ini
+# /etc/iscsi/iscsid.conf
+
+# Enable CHAP Authentication
+node.session.auth.authmethod = CHAP
+
+# One-way authentication:
+node.session.auth.username = <username>
+node.session.auth.password = <password>
+
+# Add for two-way authentication:
+node.session.auth.username_in = <username>
+node.session.auth.password_in = <password>
+```
+
+## iSCSI Initiator Issues
+
+### Network Issues
+
+```sh
+# check domain name
+dig server.lab.example.com
+
+# check connection to the target host (default 3260)
+ncat -v target_server_ip 3260
+
+# on the target host confirm the iSCSI service is listening on the port
+ss -tln | grep 3260
+
+# confirm that firewall is configured to allow iSCSI traffic
+firewall-cmd --list-all | grep 3260
+
+```
+
+### Login Issues
+
+If an initiator experiences an issue with logging in to an already discovered target, then the problem likely relates to access control or authentication.
+
+```sh
+# check (and correct) an initiator name
+cat /etc/iscsi/initiatorname.iscsi
+
+# restart the iscsid service (if necessary)
+systemctl restart iscsid
+```
+
+An initiator must be configured to use the authentication method that the target requires.
+
+```sh
+cat /etc/iscsi/iscsid.conf
+systemctl restart iscsid
+```
+
+To access the cause for login failure, execute the login in debug mode - `-d`, debug level 0-8 `-d8`
+
+```sh
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l -d8
+
+>> iscsiadm: updated 'node.session.auth.authmethod', 'None' => 'CHAP'
+```
+
+To modify existing settings, use the `iscsiadm` command with the `-o update` option
+
+```sh
+iscsiadm -m node -T iqn.2021-01.com.example.lab:target1 -o update -n node.session.auth.authmethod -v None [-p target_server[:port]]
+```
+
+To purge existing node
+
+```sh
+iscsiadm -m node -T iqn.2021-01.com.example.lab:iscsistorage -o delete [-p target_server[:port]]
+```
+
+To purge all nodes
+
+```sh
+iscsiadm -m node -o delete [-p target_server[:port]]
+```
+
+## Troubleshooting iSCSI
+
+```sh
+# verify that system discovered the iSCSI target
+iscsiadm -m node
+
+# verity iSCSI sessions
+iscsiadm -m session
+
+# login to the target
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -l -d8
+
+# turn off CHAP authentication
+vi /etc/iscsi/iscsid.conf
+
+# clear cach /var/lib/iscsi/nodes
+iscsiadm -m node -T iqn.2021-10.com.example.lab:target1 -o delete
+systemctl restart iscsid
+
+# update initiator name
+vi /etc/iscsi/initiatorname.iscsi
+systemctl restart iscsid
+
+# try to login again
+
+```
