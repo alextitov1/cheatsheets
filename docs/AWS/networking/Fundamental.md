@@ -1,4 +1,4 @@
-Availability Zone ID
+Availability Zone ID - AZ ID (e.g. eu-west-1a) - a unique identifier for an Availability Zone within a Region.
 
 Public Services - AWS IAM; AMAZON SQS; AMAZON S3
 
@@ -34,6 +34,7 @@ You can influence the routing for your VPC by editing the main route table or cr
 - public to private IP address mapping 
   * Resource must have a public IP.
   * There must be a router entry for the IGW.
+
 ### Egress-Only Internet Gateway
 - acts like a NAT gateway for IPv6 compute
 
@@ -56,11 +57,60 @@ Need one per AZ
 Use case: Non-routable IP Ranges (Overlapping)
 
 ## Transit gateway (TGW)
+
 ## Virtual Private Gateway(VGW)
+Works with AWS site to site VPN connections or AWS direct connect
+  * Managed AWS Service
+  * Acts as a router between your VPC and non-AWS-managed networks
+  * Can be associated with multiple external connections
+  * Can attach to only one VPC at a time
+
+Limitations:
+  * VGW are NOT VPC transitive
+  * VGW VPN throughput capped at 1.25 Gbps over ALL VPN connections
+  * VGW Single Tunnel Use
+  * VPN Tunnel Supports Single SA Pair
+  * AWS S2S VPN only supports the IPSec protocol
+
+Only private ASNs may be used for VGW configuration.
+  * AWS default ASN is 64512 in all regions
+  * 7224 in most regions prior to June 30, 2018
+
+### Site-to-Site VPN
+  * Tunnels are established by traffic flowing from on-prem to AWS (by default) 
+  * AWS VPN tunnels can only support a single pair of IPSec security associations.
+  * AWS creates two (Active/passive) tunnel endpoints in different AZs per VPN connection
+  
+### Accelerated Site-to-Site VPN
+  * Uses AWS Global Accelerator (GA) to route traffic
+  * Uses congestion-free AWS global network to route traffic to the best endpoint
+  * NOT compatible with VGW or CX (Cross Connect), must be attached to TGW
+  * Offers the absolute best application network performance
+  * AWS creates and manages two accelerators for you (One for each VPN tunnel)
+
+### VPN Anywhere
+  * AWS-managed version of well-known OpenVPN
+  * The endpoint gets added to only one VPC
+
+## VPN CloudHub
+* Hub-and-Spoke VPN AWS solution for IPsec VPN tunnels.
+* Up to 10 customer gateways.
+* Each cgw must have a unique BGP ASN!
+* VPN Gateway deployed via AWS VPN CloudHub with no VPC attachment (can also be attached to VPC).
+
+
+### Customer Gateway Device (CGD)
+
+Represents a customer device in AWS configuration.
+
 ## ENI (Elastic Network Interface)
+
 ## EIP (Elastic IP)
   * 5 IPs limit
 
+# IP
+
+169.254.0.0/16 - link-local non-redistributed addresses
 
 ## Classless Inter-Domain Routing (CIDR)
 
@@ -300,3 +350,4 @@ AWS Config is a service that enables you to assess, audit, and evaluate the conf
 # AWS Firewall Manager
 AWS Firewall Manager enforces deployment of Web Application Firewall ACLs,
 
+fundamental
