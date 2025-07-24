@@ -1,0 +1,1981 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/ansible/EX294/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>ex294 exam notes - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ex294-exam-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ex294 exam notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ansible-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ansible CLI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ansible CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ad-hoc-ansible-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      ad hoc ansible commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doc" class="md-nav__link">
+    <span class="md-ellipsis">
+      doc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      inventory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      vault
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#galaxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      galaxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansible-navigator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible-navigator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      config path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="config path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblecfg-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.cfg example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansible-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible-config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditionals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditionals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      When examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      When help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loops
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#earlier-style-ansible-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earlier-style Ansible loops
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handlers-and-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handlers and Failure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handlers and Failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignore_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      ignore_errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change_when" class="md-nav__link">
+    <span class="md-ellipsis">
+      change_when
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failed_when-define-what-failure-means-in-the-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      failed_when - define what “failure” means in the task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-default-and-password_hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter default and password_hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-dict2items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter dict2items
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-product-and-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter product and list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-lookupdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter lookup('dict', ...)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-import-and-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Include, Import and Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Include, Import and Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    <span class="md-ellipsis">
+      Include
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Include">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#include_vars" class="md-nav__link">
+    <span class="md-ellipsis">
+      include_vars
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include_tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      include_tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      include_role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import_playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      import_playbook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      import_tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_role" class="md-nav__link">
+    <span class="md-ellipsis">
+      import_role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#role-section-in-a-play" class="md-nav__link">
+    <span class="md-ellipsis">
+      Role section in a Play
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-a-role-from-ansible-galaxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install a role from Ansible Galaxy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-and-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Facts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables and Facts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inventory variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command line variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playbook-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playbook variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Var files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work-with-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Work with dictionaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#magic-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Magic Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Magic Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hostvars" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hostvars
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_names" class="md-nav__link">
+    <span class="md-ellipsis">
+      group_names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory_hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      inventory_hostname
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Facts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Facts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages Facts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-and-copying-files-to-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying and Copying Files to Hosts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying and Copying Files to Hosts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansibleposix" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.posix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-ansible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Ansible
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Ansible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinuri" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.uri
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.stat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinassert" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.assert
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ex294-exam-notes">ex294 exam notes</h1>
+<h2 id="ansible-cli">Ansible CLI</h2>
+<h3 id="ad-hoc-ansible-commands">ad hoc ansible commands</h3>
+<pre><code class="language-sh">ansible host-pattern -m module [-a 'module arguments'] [-i inventory]
+ansible -i inventory localhost -m setup
+
+# default module is command -a argument localhost is the host
+ansible -a /bin/date localhost 
+
+# ansible_facts 
+ansible -m setup localhost
+
+# -k prompt for password
+ansible -m ping -i inventory all -u 4esnok -k
+</code></pre>
+<h3 id="checks">checks</h3>
+<pre><code class="language-sh">ansible-playbook -i inventory site.yml --syntax-check
+
+ansible-playbook -i inventory site.yml --check
+</code></pre>
+<h3 id="doc">doc</h3>
+<pre><code class="language-sh">ansible-doc -l
+ansible-doc -s ansible.builtin.copy
+ansible-navigator doc -t lookup -m lookup -l -m stdout 
+</code></pre>
+<h3 id="inventory">inventory</h3>
+<pre><code class="language-sh">ansible-navigator inventory -m stdout --list
+ansible-inventory --list
+ansible-inventory --graph all
+ansible --list all
+</code></pre>
+<pre><code class="language-sh">ansible --list 'webservers:rhel' # intersection
+ansible --list 'webservers:&amp;rhel' # conjunction
+ansible --list 'webservers:!rhel' # negation
+
+</code></pre>
+<h3 id="vault">vault</h3>
+<pre><code class="language-sh">ansible-vault create secret.yml
+ansible-vault create --vault-password-file=vault-pass secret.yml
+
+ansible-vault view secret1.yml
+ansible-vault edit secret.yml
+
+ansible-vault encrypt secret1.yml secret2.yml
+ansible-vault decrypt secret1.yml --output=secret1-decrypted.yml
+
+ansible-vault rekey secret.yml
+</code></pre>
+<pre><code class="language-sh"># prompt for the vault password
+ansible-navigator run -m stdout --playbook-artifact-enable false create_users.yml --vault-id @prompt
+
+ansible-navigator run -m stdout create_users.yml --vault-password-file=vault-pass
+</code></pre>
+<h3 id="galaxy">galaxy</h3>
+<pre><code class="language-sh">ansible-galaxy collection install fedora.linux_system_roles -p ./collections
+
+ansible-galaxy search 'redis' --platforms EL
+ansible-galaxy info geerlingguy.redis
+
+ansible-galaxy list
+ansible-galaxy remove nginx
+</code></pre>
+<h3 id="ansible-navigator">ansible-navigator</h3>
+<pre><code class="language-sh"># ee is execution environment, playbook runs on the host
+ansible-navigator run --ee false -m stdout playbook.yml
+</code></pre>
+<h2 id="config-path">config path</h2>
+<ul>
+<li>/etc/ansible/ansible.cfg # system wide</li>
+<li>~/.ansible.cfg # home directory</li>
+<li>./ansible.cfg # current directory</li>
+</ul>
+<h3 id="ansiblecfg-example">ansible.cfg example</h3>
+<pre><code class="language-ini">[defaults]
+inventory = ./inventory
+remote_user = root
+host_key_checking = False
+retry_files_enabled = False
+roles_path = ./roles
+library = ./library
+module_utils = ./module_utils
+callback_whitelist = profile_tasks
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+</code></pre>
+<h3 id="ansible-config">ansible-config</h3>
+<p>show configurations that have changed from the default</p>
+<pre><code class="language-sh">ansible-config dump --only-changed
+</code></pre>
+<p>generate ansible.cfg from a template</p>
+<pre><code class="language-sh">ansible-config init
+</code></pre>
+<h2 id="syntax">Syntax</h2>
+<h3 id="conditionals">Conditionals</h3>
+<pre><code class="language-yaml">---
+- name: Simple Boolean Task Demo
+  hosts: all
+  vars:
+    run_my_task: true
+  tasks:
+    - name: httpd package is installed
+      ansible.builtin.dnf:
+        name: httpd
+      when: run_my_task | bool
+</code></pre>
+<pre><code class="language-yaml">---
+- name: Test Variable is Defined Demo
+  hosts: all
+  vars:
+    my_service: httpd
+  tasks:
+    - name: &quot;{{ my_service }} package is installed&quot;
+      ansible.builtin.dnf:
+        name: &quot;{{ my_service }}&quot;
+      when: my_service is defined
+</code></pre>
+<p>greater-thn character (&gt;) used to split the long conditionals over multiple lines</p>
+<pre><code class="language-yaml">when: &gt;
+    ( ansible_facts['distribution'] == &quot;RedHat&quot; and
+      ansible_facts['distribution_major_version'] == &quot;9&quot; )
+    or
+    ( ansible_facts['distribution'] == &quot;Fedora&quot; and
+    ansible_facts['distribution_major_version'] == &quot;34&quot; )
+</code></pre>
+<p>these two conditions are equal</p>
+<pre><code class="language-yaml">when: ansible_facts['distribution_version'] == &quot;9.0&quot; and ansible_facts['kernel'] == &quot;5.14.0-70.13.1.el9_0.x86_64&quot;
+</code></pre>
+<pre><code class="language-yaml">when:
+  - ansible_facts['distribution_version'] == &quot;9.0&quot;
+  - ansible_facts['kernel'] == &quot;5.14.0-70.13.1.el9_0.x86_64&quot;
+</code></pre>
+<h4 id="when-examples">When examples</h4>
+<pre><code class="language-yaml">when: ansible_facts['distribution'] == &quot;RedHat&quot;
+when: &quot;'RedHat' in ansible_facts['distribution']&quot;
+when: my_var is defined
+</code></pre>
+<h4 id="when-help">When help</h4>
+<pre><code class="language-sh">ansible-doc -t keyword when
+</code></pre>
+<h3 id="loops">Loops</h3>
+<pre><code class="language-yaml">- name: Postfix and Dovecot are running
+  ansible.builtin.service:
+    name: &quot;{{ item }}&quot;
+    state: started
+  loop:
+    - postfix
+    - dovecot
+</code></pre>
+<pre><code class="language-yaml">- name: Users exist and are in the correct groups
+  user:
+    name: &quot;{{ item['name'] }}&quot;
+    state: present
+    groups: &quot;{{ item['groups'] }}&quot;
+  loop:
+    - name: jane
+      groups: wheel
+    - name: joe
+      groups: root
+</code></pre>
+<pre><code class="language-yaml">vars:
+  mail_services:
+    - postfix
+    - dovecot
+tasks:
+  - name: Postfix and Dovecot are running
+    ansible.builtin.service:
+      name: &quot;{{ item }}&quot;
+      state: started
+    loop: &quot;{{ mail_services }}&quot;
+</code></pre>
+<p>The <strong>register</strong> keyword can also capture the output of a task that loops. The following snippet shows the structure of the <strong>register</strong> variable from a task that loops:</p>
+<pre><code class="language-yaml">---
+- name: Loop Register Test
+  gather_facts: no
+  hosts: localhost
+  tasks:
+    - name: Looping Echo Task
+      ansible.builtin.shell: &quot;echo This is my item: {{ item }}&quot;
+      loop:
+        - one
+        - two
+      register: echo_results
+    - name: Show echo_results variable
+      ansible.builtin.debug:
+        var: echo_results
+</code></pre>
+<details>
+<summary>playbook output</summary>
+
+
+<pre><code class="language-json">{&quot;echo_results&quot;: {
+        &quot;changed&quot;: true,
+        &quot;msg&quot;: &quot;All items completed&quot;,
+        &quot;results&quot;: [
+            {
+                &quot;ansible_facts&quot;: {
+                    &quot;discovered_interpreter_python&quot;: &quot;/usr/local/bin/python3.11&quot;
+                },
+                &quot;ansible_loop_var&quot;: &quot;item&quot;,
+                &quot;changed&quot;: true,
+                &quot;cmd&quot;: &quot;echo This is my item: one&quot;,
+                &quot;delta&quot;: &quot;0:00:00.014493&quot;,
+                &quot;end&quot;: &quot;2023-03-22 22:14:19.949881&quot;,
+                &quot;failed&quot;: false,
+                &quot;invocation&quot;: {}}]}}
+</code></pre>
+
+</details>
+
+<h4 id="earlier-style-ansible-loops">Earlier-style Ansible loops</h4>
+<table>
+<thead>
+<tr>
+<th>Loop keyword</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>with_items</code></td>
+<td>Behaves the same as the loop keyword for simple lists, such as a list of strings or a list of dictionaries. Unlike loop, if lists of lists are provided to with_items, they are flattened into a single-level list. The item loop variable holds the list item used during each iteration.</td>
+</tr>
+<tr>
+<td><code>with_file</code></td>
+<td>Requires a list of control node file names. The item loop variable holds the content of a corresponding file from the file list during each iteration.</td>
+</tr>
+<tr>
+<td><code>with_sequence</code></td>
+<td>Requires parameters to generate a list of values based on a numeric sequence. The item loop variable holds the value of one of the generated items in the generated sequence during each iteration.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="loop-help">Loop help</h4>
+<blockquote>
+<p>Loops are facilitated by lookup plugin</p>
+</blockquote>
+<pre><code class="language-sh">ansible-doc -t lookup -l
+ansible-doc -t keyword loop
+</code></pre>
+<h3 id="handlers-and-failure">Handlers and Failure</h3>
+<pre><code class="language-yaml">tasks:
+  - name: copy demo.example.conf configuration template
+    ansible.builtin.template:
+      src: /var/lib/templates/demo.example.conf.template
+      dest: /etc/httpd/conf.d/demo.example.conf
+    notify:
+      - restart apache
+handlers:
+  - name: restart apache
+    ansible.builtin.service:
+      name: httpd
+      state: restarted
+</code></pre>
+<h4 id="ignore_errors">ignore_errors</h4>
+<pre><code class="language-yaml">- name: Install {{ web_package }} package
+  ansible.builtin.dnf:
+    name: &quot;{{ web_package }}&quot;
+    state: present
+  ignore_errors: yes
+</code></pre>
+<h4 id="change_when">change_when</h4>
+<blockquote>
+<p>change the status of the task</p>
+</blockquote>
+<pre><code class="language-yaml">- name: Check local time
+  ansible.builtin.command: date
+  register: command_result
+  changed_when: false
+</code></pre>
+<h4 id="failed_when-define-what-failure-means-in-the-task">failed_when - define what “failure” means in the task</h4>
+<pre><code class="language-yaml">- name: Fail task when the command error output prints FAILED
+  ansible.builtin.command: /usr/bin/example-command -x -y -z
+  register: command_result
+  failed_when: &quot;'FAILED' in command_result.stderr&quot;
+</code></pre>
+<h4 id="check_mode">check_mode</h4>
+<pre><code class="language-sh">ansible-navigator run --check
+</code></pre>
+<pre><code class="language-yaml">tasks:
+  - name: task always runs even in check mode
+    ansible.builtin.shell: uname -a
+    check_mode: no
+</code></pre>
+<h3 id="block">Block</h3>
+<p>block - a way to group tasks together and execute them as a single unit</p>
+<pre><code class="language-yaml">tasks:
+  - name: Attempt to set up a webserver
+    block:
+      - name: Install {{ web_package }} package
+        ansible.builtin.dnf:
+          name: &quot;{{ web_package }}&quot;
+          state: present
+    rescue:
+      - name: Install {{ db_package }} package
+        ansible.builtin.dnf:
+          name: &quot;{{ db_package }}&quot;
+          state: present
+    always:
+      - name: Start {{ db_service }} service
+        ansible.builtin.service:
+          name: &quot;{{ db_service }}&quot;
+          state: started
+</code></pre>
+<h3 id="filters">Filters</h3>
+<h4 id="filter-help">Filter help</h4>
+<pre><code class="language-sh">ansible-doc -t filter -l
+</code></pre>
+<h4 id="filter-default-and-password_hash">Filter default and password_hash</h4>
+<pre><code class="language-yaml">password: &quot;{{ my_password | default('redhat') | password_hash('sha512') }}&quot;
+</code></pre>
+<h4 id="filter-dict2items">Filter dict2items</h4>
+<pre><code class="language-yaml">vars:
+  my_users:
+    fred:
+      groups:
+        - flintstones
+        - wheel
+      password: yabadabadoo
+    wilma:
+      groups: flintstones
+      password: yabadabadoo
+    barney:
+      groups: rubbles
+      password: flimflom
+tasks:
+  - name: Ensure users are in their appropriate groups
+    loop: &quot;{{ my_users | dict2items }}&quot;
+    ansible.builtin.user:
+      name: &quot;{{ item['key'] }}&quot;
+      state: present
+      groups: &quot;{{ item['value']['groups'] }}&quot;
+      password: &quot;{{ item['value']['password'] | password_hash('sha512') }}&quot;
+      update_password: on_create
+      generate_ssh_key: yes
+</code></pre>
+<h4 id="filter-product-and-list">Filter product and list</h4>
+<pre><code class="language-yaml">vars:
+  beatles:
+    - John
+    - Paul
+    - George
+    - Ringo
+
+  category_db:
+    - lyric
+    - concerts
+    - instruments
+
+tasks:
+  - name: Ensure Beatles access to their databases
+    loop: &quot;{{ beatles | product(category_db) | list }}&quot;
+    ansible.mysql.mysql_user:
+      name: &quot;{{ item[0] }}&quot;
+      priv: &quot;{{ item[1] }}.*:ALL&quot;
+      append_privs: yes
+      password: &quot;{{ 'db_pass' | password_hash('sha512') }}&quot;
+</code></pre>
+<blockquote>
+<p>The <strong>list</strong> filter is used here to convert the result of the product filter into a list, which is then used to loop over.</p>
+</blockquote>
+<h4 id="filter-lookupdict">Filter lookup('dict', ...)</h4>
+<pre><code class="language-yaml"># ansible-doc  -t lookup dict
+vars:
+  config_files:
+    vim:
+      file: vimrc
+      dest: ~/.vimrc
+    yamllint:
+      file: yamllint
+      dest: ~/.config/yamllint/config
+
+tasks:
+  - name: Ensure config files are copied
+    loop: &quot;{{ lookup('dict', config_files) }}&quot;
+    ansible.builtin.copy:
+      src: &quot;{{ item['value']['file'] }}&quot;
+      dest: &quot;{{ item['value']['dest'] }}&quot;
+
+</code></pre>
+<h2 id="include-import-and-roles">Include, Import and Roles</h2>
+<h3 id="include">Include</h3>
+<blockquote>
+<p>Includes are considered <strong>dynamic</strong> operation. Ansible will process the instruction as it gets to the appropriate line inside of your playbook.</p>
+</blockquote>
+<h4 id="include_vars">include_vars</h4>
+<h4 id="include_tasks">include_tasks</h4>
+<pre><code class="language-yml">---
+- name: Install web server
+  hosts: webservers
+  tasks:
+  - include_tasks: webserver_tasks.yml
+</code></pre>
+<h4 id="include_role">include_role</h4>
+<p>One key difference between include_role and import_role is how they handle task-level keywords, conditionals, and loops:</p>
+<ul>
+<li>
+<p>ansible.builtin.import_role applies the task's conditionals and loops to each of the tasks being imported.</p>
+</li>
+<li>
+<p>ansible.builtin.include_role applies the task's conditionals and loops to the statement that determines whether the role is included or not.</p>
+</li>
+</ul>
+<h3 id="import">Import</h3>
+<blockquote>
+<p>Imports are considered <strong>static</strong> operation. Ansible will pre-processed at the time the playbook is parsed. (can't use loop, variables are limited)</p>
+</blockquote>
+<h4 id="import_playbook">import_playbook</h4>
+<p>example of a master playbook</p>
+<pre><code class="language-yml">- name: Prepare the web server
+  import_playbook: web.yml
+
+- name: Prepare the database server
+  import_playbook: db.yml
+</code></pre>
+<h4 id="import_tasks">import_tasks</h4>
+<pre><code class="language-sh">[admin@node ~]$ cat webserver_tasks.yml
+- name: Installs the httpd package
+  ansible.builtin.dnf:
+    name: httpd
+    state: latest
+
+- name: Starts the httpd service
+  ansible.builtin.service:
+    name: httpd
+    state: started
+</code></pre>
+<pre><code class="language-yml">---
+- name: Install web server
+  hosts: webservers
+  tasks:
+  - import_tasks: webserver_tasks.yml
+</code></pre>
+<pre><code class="language-yml">...output omitted...
+tasks:
+  - name: Import task file and set variables
+    import_tasks: task.yml
+    vars:
+      package: httpd
+      service: httpd
+</code></pre>
+<h4 id="import_role">import_role</h4>
+<details>
+<summary> ansible treats the role as a static import </summary>
+With the ansible.builtin.import_role module, Ansible treats the role as a static import and parses it during initial playbook processing.
+
+In the preceding example, when the playbook is parsed:
+
+* If roles/role2/tasks/main.yml exists, Ansible adds the tasks in that file to the play.
+
+* If roles/role2/handlers/main.yml exists, Ansible adds the handlers in that file to the play.
+
+* If roles/role2/defaults/main.yml exists, Ansible adds the default variables in that file to the play.
+
+* If roles/role2/vars/main.yml exists, Ansible adds the variables in that file to the play (possibly overriding values from role default variables due to precedence).
+> Because ansible.builtin.import_role is processed when the playbook is parsed, the role's handlers, default variables, and role variables are all exposed to all the tasks and roles in the play, and can be accessed by tasks and roles that precede it in the play (even though the role has not run yet).
+</details>
+
+<pre><code class="language-yml">- name: Run a role as a task
+  hosts: remote.example.com
+  tasks:
+    - name: A normal task
+      ansible.builtin.debug:
+        msg: 'first task'
+    - name: A task to import role2 here
+      ansible.builtin.import_role:
+        name: role2
+      vars:
+        var1: val1
+        var2: val2
+</code></pre>
+<h3 id="roles">Roles</h3>
+<h4 id="role-section-in-a-play">Role section in a Play</h4>
+<pre><code class="language-yml">---
+- name: A play that only has roles
+  hosts: remote.example.com
+  roles:
+    - role: role1
+    - role: role2
+</code></pre>
+<h4 id="install-a-role-from-ansible-galaxy">Install a role from Ansible Galaxy</h4>
+<pre><code class="language-yml"># roles/requirments.yml
+- src: https://git.example.com/someuser/someuser.myrole
+  scm: git
+  version: &quot;1.5.0&quot;
+
+- src: https://www.example.com/role-archive/someuser.otherrole.tar
+  name: someuser.otherrole
+
+# from Ansible Galaxy, using the latest version
+- src: geerlingguy.redis
+
+# from Ansible Galaxy, overriding the name and using a specific version
+- src: geerlingguy.redis
+  version: &quot;1.5.0&quot;
+  name: redis_prod
+
+# from any Git based repository, using HTTPS
+- src: https://github.com/geerlingguy/ansible-role-nginx.git
+  scm: git
+  version: master
+  name: nginx
+
+# from a role tar ball, given a URL;
+#   supports 'http', 'https', or 'file' protocols
+- src: file:///opt/local/roles/myrole.tar
+  name: myrole
+
+</code></pre>
+<pre><code class="language-sh">ansible-galaxy role install -r roles/requirements.yml -p roles
+</code></pre>
+<h2 id="variables-and-facts">Variables and Facts</h2>
+<h3 id="variables">Variables</h3>
+<details>
+<summary>Variables priority from top to bottom</summary>
+
+* Group variables defined in the inventory
+* Group variables defined in files in a group_vars subdirectory in the same directory as the inventory or the playbook
+* Host variables defined in the inventory
+* Host variables defined in files in a host_vars subdirectory in the same directory as the inventory or the playbook
+* Host facts, discovered at runtime
+* Play variables in the playbook (vars and vars_files)
+* Task variables
+* Extra variables defined on the command line
+</details>
+
+<h4 id="inventory-variables">Inventory variables</h4>
+<p>You can define variables for hosts and host groups by creating two directories, <em>group_vars</em> and <em>host_vars</em>, in the same working directory as the inventory file or playbook.</p>
+<pre><code class="language-sh">project
+├── ansible.cfg
+├── group_vars
+│   ├── datacenters
+│   ├── datacenters1
+│   └── datacenters2
+├── host_vars
+│   ├── demo1.example.com
+│   ├── demo2.example.com
+│   ├── demo3.example.com
+│   └── demo4.example.com
+├── inventory
+└── playbook.yml
+</code></pre>
+<h4 id="command-line-variables">Command line variables</h4>
+<p>set a variable on the command line</p>
+<pre><code class="language-sh">ansible-navigator run main.yml -e &quot;package=apache&quot;
+</code></pre>
+<h4 id="playbook-variables">Playbook variables</h4>
+<p>define a variable in a playbook or vars_files</p>
+<pre><code class="language-yaml">user1_first_name: Bob
+user1_last_name: Jones
+user1_home_dir: /users/bjones
+user2_first_name: Anne
+user2_last_name: Cook
+user2_home_dir: /users/acook
+
+users:
+  bjones:
+    first_name: Bob
+    last_name: Jones
+    home_dir: /users/bjones
+  acook:
+    first_name: Anne
+    last_name: Cook
+    home_dir: /users/acook
+</code></pre>
+<h4 id="var-files">Var files</h4>
+<pre><code class="language-yaml">- hosts: all
+  vars_files:
+    - vars/users.yml
+</code></pre>
+<h3 id="work-with-dictionaries">Work with dictionaries</h3>
+<pre><code class="language-sh"># Ansible way
+# Returns 'Bob'
+users.bjones.first_name
+# Returns '/users/acook'
+users.acook.home_dir
+
+# Python way
+# Returns 'Bob'
+users['bjones']['first_name']
+# Returns '/users/acook'
+users['acook']['home_dir']
+</code></pre>
+<h3 id="magic-variables"><a href="https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html">Magic Variables</a></h3>
+<h4 id="hostvars">Hostvars</h4>
+<p>A dictionary with all the hosts in inventory and variables assigned to them</p>
+<pre><code class="language-sh">hostvars['demo2.example.com']['ansible_facts']['interfaces']
+</code></pre>
+<h4 id="group_names">group_names</h4>
+<p>A list of groups the current host is part of</p>
+<h4 id="groups">groups</h4>
+<p>A dictionary with all the groups in inventory and each group has the list of hosts that belong to it</p>
+<h4 id="inventory_hostname">inventory_hostname</h4>
+<p>The inventory name for the ‘current’ host being iterated over in the play</p>
+<h3 id="facts">Facts</h3>
+<pre><code class="language-yaml"># Display all facts
+- name: Fact dump
+  hosts: all
+  tasks:
+    - name: Print all facts
+      ansible.builtin.debug:
+        var: ansible_facts
+</code></pre>
+<blockquote>
+<p><strong>Ansible Facts Injected as Variables</strong>
+Before Ansible 2.5, facts were always injected as individual variables prefixed with the string ansible_ instead of being part of the ansible_facts variable. For example, the ansible_facts['distribution'] fact was called ansible_distribution.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ansible_facts.* name</th>
+<th>ansible_* name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ansible_facts['hostname']</code></td>
+<td><code>ansible_hostname</code></td>
+</tr>
+<tr>
+<td><code>ansible_facts['fqdn']</code></td>
+<td><code>ansible_fqdn</code></td>
+</tr>
+<tr>
+<td><code>ansible_facts['default_ipv4']['address']</code></td>
+<td><code>ansible_default_ipv4['address']</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="custom-facts">Custom Facts</h4>
+<p>By default, the ansible.builtin.setup module loads custom facts from files and scripts in the etc/ansible/facts.d. File shoudl end with ".fact". The ansible.builtin.setup module stores custom facts in the ansible_facts['ansible_local'] variable.</p>
+<pre><code class="language-ini"># file name should end with .fact
+[packages]
+web_package = httpd
+db_package = mariadb-server
+
+[users]
+user1 = joe
+user2 = jane
+</code></pre>
+<h4 id="packages-facts">Packages Facts</h4>
+<pre><code class="language-yaml">- name: Insure package facts gathered
+  ansible.builtin.package_facts:
+
+- name: print package facts
+  ansible.builtin.debug:
+    var: ansible_facts.packages
+</code></pre>
+<h2 id="modifying-and-copying-files-to-hosts">Modifying and Copying Files to Hosts</h2>
+<h3 id="ansiblebuiltin">ansible.builtin</h3>
+<table>
+<thead>
+<tr>
+<th>Module name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blockinfile</td>
+<td>Insert/update/remove a text block surrounded by marker lines in a file</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>Copy a file from the local or remote machine to a location on the managed hosts</td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>Works like the copy module, but in reverse</td>
+</tr>
+<tr>
+<td>file</td>
+<td>Set attributes such as permissions, ownership, SELinux contexts, and time stamps of regular files, symlinks, hard links, and directories. This module can also create or remove regular files, symlinks, hard links, and directories. A number of other file-related modules support the same options to set attributes as the file module, including the copy module.</td>
+</tr>
+<tr>
+<td>lineinfile</td>
+<td>Ensure that a particular line is in a file, or replace an existing line using a back-reference regular expression. This module is primarily useful when you want to change a single line in a file.</td>
+</tr>
+<tr>
+<td>stat</td>
+<td>Retrieve status information for a file, similar to the Linux stat command.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ansibleposix">ansible.posix</h3>
+<table>
+<thead>
+<tr>
+<th>Module name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>patch</td>
+<td>Apply a patch using GNU patch.</td>
+</tr>
+<tr>
+<td>synchronize</td>
+<td>A wrapper around the rsync command to simplify common tasks. The synchronize module is not intended to provide access to the full power of the rsync command, but does make the most common invocations easier to implement. You might still need to call the rsync command directly via the run command module depending on your use case.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="troubleshooting-ansible">Troubleshooting Ansible</h2>
+<h3 id="ansiblebuiltinuri">ansible.builtin.uri</h3>
+<blockquote>
+<p>The ansible.builtin.uri module provides a way to verify that a RESTful API is returning the required content.</p>
+</blockquote>
+<pre><code class="language-yaml">tasks:
+  - ansible.builtin.uri:
+      url: http://api.myapp.example.com
+      return_content: yes
+    register: apiresponse
+
+  - ansible.builtin.fail:
+      msg: 'version was not provided'
+    when: &quot;'version' not in apiresponse.content&quot;
+</code></pre>
+<h3 id="ansiblebuiltinstat">ansible.builtin.stat</h3>
+<blockquote>
+<p>You can use it to register a variable and then test to determine if the file exists or to get other information about the file</p>
+</blockquote>
+<pre><code class="language-yaml">tasks:
+  - name: Check if /var/run/app.lock exists
+    ansible.builtin.stat:
+      path: /var/run/app.lock
+    register: lock
+
+  - name: Fail if the application is running
+    ansible.builtin.fail:
+    when: lock['stat']['exists']
+</code></pre>
+<h3 id="ansiblebuiltinassert">ansible.builtin.assert</h3>
+<pre><code class="language-yaml">tasks:
+  - name: Check if /var/run/app.lock exists
+    ansible.builtin.stat:
+      path: /var/run/app.lock
+    register: lock
+
+  - name: Fail if the application is running
+    ansible.builtin.assert:
+      that:
+        - not lock['stat']['exists']
+</code></pre>
+<h1 id="yaml">YAML</h1>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html-single/getting_started_with_kubernetes/index#yaml_in_a_nutshell">YAML in a nutshell</a></p>
+<h2 id="special-characters">Special characters</h2>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>( | ) vertical ber</td>
+<td>to denote a new line characters</td>
+</tr>
+<tr>
+<td>( &gt; ) greater-than</td>
+<td>new line characters to be converted to spaces</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-yaml">include_newlines: |
+  Example Company
+  123 Main Street
+  Atlanta, GA 30303
+</code></pre>
+<pre><code class="language-yaml">fold_newlines: &gt;
+  This is an example
+  of a long string,
+  that will become
+  a single sentence once folded.
+</code></pre>
+<h2 id="yaml-dictionaries">YAML Dictionaries</h2>
+<pre><code class="language-yaml">name: svcrole
+svcservice: httpd
+svcport: 80
+</code></pre>
+<pre><code class="language-yaml">{name: svcrole, svcservice: httpd, svcport: 80}
+</code></pre>
+<h2 id="yaml-lists">YAML Lists</h2>
+<pre><code class="language-yaml">hosts:
+  - servera
+  - serverb
+  - serverc
+</code></pre>
+<pre><code class="language-yaml">hosts: [servera, serverb, serverc]
+</code></pre>
+<h1 id="jinja2">Jinja2</h1>
+<h2 id="for-statement">for statement</h2>
+<pre><code class="language-jinja2">{# for statement - this is comment #}
+{% for user in users %}
+      {{ user }}
+{% endfor %}
+
+{% for myhost in groups['myhosts'] %}
+{{ myhost }}
+{% endfor %}
+</code></pre>
+<h2 id="conditional-statements">Conditional statements</h2>
+<pre><code class="language-jinja2">{% if finished %}
+  {{ result }}
+{% endif %}
+</code></pre>
+<h2 id="etchosts-file">/etc/hosts file</h2>
+<pre><code class="language-yaml">- name: /etc/hosts is up to date
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Deploy /etc/hosts
+      ansible.builtin.template:
+        src: templates/hosts.j2
+        dest: /etc/hosts
+</code></pre>
+<pre><code class="language-jinja2">{{ ansible_managed }}
+{% for host in groups['all'] %}
+{{ hostvars[host]['ansible_facts']['default_ipv4']['address'] }} {{ hostvars[host]['ansible_facts']['fqdn'] }} {{ hostvars[host]['ansible_facts']['hostname'] }}
+{% endfor %}
+</code></pre>
+<h3 id="jinja2-filters">jinja2 filters</h3>
+<pre><code class="language-jinja2">{{ 'hello world' | capitalize }}
+{{ output | to_json }}
+{{ output | to_yaml }}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

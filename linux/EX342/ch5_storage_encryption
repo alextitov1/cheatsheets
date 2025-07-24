@@ -1,0 +1,94 @@
+# Resolving storage device encryption issues
+
+## Using LUKS to Encrypt Partitions
+
+LUKS - Linux Unified Key Setup is a specification for block device encryption.
+
+1. System consults the **/etc/crypttab** file to determine which devices to decrypt.
+
+    **/etc/crypttab** - file that contains information about encrypted devices and their keys.
+
+    ```crypttab
+    # cat /etc/crypttab
+    name  /dev/<device>  /path/to/keyfile
+    ```
+
+    * name is the name that the *device mapper* creates for the decrypted device.
+    * /dev/\<device> is the device that is encrypted.
+    * /path/to/keyfile is the path to the keyfile that is used to decrypt the device. If the last field is blank or set to none, then the user is prompted for the passphrase.
+
+1. The system decrypts the device, by using the passphrase from the user or the key file, and names the device */dev/mapper/name*, with the specified name in */etc/crypttab*.
+
+1. The system mounts the file system in the decrypted mapped device, by using the relevant entry in the **/etc/fstab** file.
+
+    ```fstab
+    # cat /etc/fstab
+    /dev/mapper/name  /mount/point  ext4  defaults  0  0
+
+    # using UUID
+    UUID=<uuid>  /mount/point  ext4  defaults  0  0
+    ```
+
+## Troubleshooting LUKS
+
+### Incorrect /etc/crypttab Configuration
+
+```sh
+dmsetup ls --target crypt
+```
+
+### Decryption Failure
+
+Devices might fail decryption due to problems with a key or passphrase.
+
+* The LUKS passphrase might be incorrect - forgotten, or mistyped. The LUKS2 format offers 32 key slots for encrypted devices. If other keys or passphrases exist, then they can rest the forgotten passphrase. To display associated keys, use the following command:
+
+    ```sh
+    cryptsetup luksDump /dev/<device>
+    ```
+
+* The LUKS header is corrupted. LUKS stores a metadata header and key slots at the beginning of the device. A corrupted LUKS header can render the encrypted data inaccessible. If a know-good backup of the LUKS header is exists, then restore the header
+
+    ```sh
+    # backup the LUKS header
+    cryptsetup luksHeaderBackup /dev/<device> --header-backup-file /path/to/header-backup-file
+    ```
+
+    ```sh
+    # testing the backup header
+    cryptsetup luksOpen /dev/<encrypted device> DECRYPTED-NAME --header /path/to/header-backup-file
+    ```
+
+    if the test succeeds, then restore the header
+
+    ```sh
+    cryptsetup luksHeaderRestore /dev/<device> --header-backup-file /path/to/header-backup-file
+    ```
+
+    If a backup of the LUKS header is not available, then the data is lost.
+
+## Example
+
+```sh
+grep /mnt/secure /etc/fstab
+cat /etc/crypttab
+
+# list the encrypted devices
+dmsetup ls --target crypt
+
+# decrypt the device
+cryptsetup luksOpen /dev/vdb1 secure
+
+# dump the LUKS header (check how many key slots are used)
+cryptsetup luksDump /dev/vdb1
+
+# backup the LUKS header
+cryptsetup luksHeaderBackup /dev/vdb1 --header-backup-file /root/luks_header_new
+
+# restore the LUKS header
+cryptsetup luksHeaderRestore /dev/vdb1 --header-backup-file /root/luks_header_backup
+```
+
+## References
+
+* [All about LUKS, cryptsetup, and dm-crypt](https://access.redhat.com/articles/193443)
