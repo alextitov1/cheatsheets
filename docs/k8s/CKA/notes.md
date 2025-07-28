@@ -1,4 +1,4 @@
-NEXT: 03.17 - Resource requirements and limits
+NEXT: 03.34 - LAB: admission-controllers
 
 # Key Concepts
 
@@ -188,6 +188,82 @@ spec:
             - ssd  # Node label to select
 ```
 
+# Resource Requests and Limits
+
+0.1 CPU = 100m CPU # means 100 milli CPU
+
+1 CPU = 1000m CPU
+
+
+```yaml
+# pod-with-resources.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    resources:
+      requests:
+        memory: "64Mi"  # Minimum memory required
+        cpu: "250m"  # Minimum CPU required
+      limits:
+        memory: "128Mi"  # Maximum memory allowed
+        cpu: "500m"  # Maximum CPU allowed
+```
+
+## Limit Ranges
+sets on a namespace level
+
+```yaml
+# limit-range.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: my-limit-range
+spec:
+  limits:
+  - default:
+      memory: "256Mi"
+      cpu: "500m"
+    defaultRequest:
+      memory: "128Mi"
+      cpu: "250m"
+    type: Container
+```
+
+## Resource Quotas
+Resource quotas limit the total resources that can be consumed in a namespace.
+
+```yaml
+# resource-quota.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: my-resource-quota
+spec:
+  hard:
+    requests.cpu: "10"  # Total CPU requests allowed
+    requests.memory: "20Gi"  # Total memory requests allowed
+    limits.cpu: "20"  # Total CPU limits allowed
+    limits.memory: "40Gi"  # Total memory limits allowed
+    pods: "10"  # Total number of pods allowed
+    services: "5"  # Total number of services allowed
+```
+
+# Static Pods
+Static pods are managed directly by the `kubelet` on a node, not by the Kubernetes API server.
+They can be used for deploying kubernetes system components or other critical applications that need to run on specific nodes.
+
+kubelet watches this directory `/etc/kubernetes/manifests` for pod definitions. (directory can be configured)
+
+* `--pod-manifest-path` option can be used to specify a different directory.
+
+* `staticPodPath` option in kubelet configuration file can also be used to specify the directory.
+
+
 
 # Cli Commands
 
@@ -216,4 +292,6 @@ kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o y
 
 # Set a label on a node
 kubectl label node node01 color=blue
-```
+
+# Create DaemonSet
+kubectl create create daemonset my-daemonset --image=nginx

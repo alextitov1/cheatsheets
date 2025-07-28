@@ -81,3 +81,15 @@ kubectl scale --replicas=5 replicaset myapp-replicaset
 
  ps -aux | grep kube-controller-manager
  ```
+
+
+# Admission controller
+Admission controller is a piece of code that intercepts requests to the Kubernetes API server before they are persisted in etcd. It can modify or reject requests based on certain criteria.
+
+check admission controllers:
+```sh
+kube-apiserver -h | grep enable-admission-plugins
+or 
+kubectl exec kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep
+```
+    
