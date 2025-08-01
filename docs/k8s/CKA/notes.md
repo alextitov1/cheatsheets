@@ -295,3 +295,6 @@ kubectl label node node01 color=blue
 
 # Create DaemonSet
 kubectl create create daemonset my-daemonset --image=nginx
+
+# Check the differences between live objects and manifests
+kubectl diff -f my-app/example-deployment.yaml
