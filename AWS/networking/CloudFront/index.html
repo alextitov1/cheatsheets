@@ -1,0 +1,580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/AWS/networking/CloudFront/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>CloudFront - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloudfront" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CloudFront
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cloudfront">CloudFront</h1>
+<p>CDN, operates on Level4</p>
+<h1 id="key-concepts">Key Concepts</h1>
+<p><strong>Origin Server</strong>: Location of stored content for distributions to use. (S3, EC2, ALB, Lambda, MediaStore, CloudFront Origin Group)</p>
+<p><strong>Distribution</strong>: Configuration telling CloudFront which origin server to use.</p>
+<p><strong>Domain Name</strong>: CloudFront-assigned DNS for use in web requests.</p>
+<p><strong>Edge Location</strong> (aka Point of presents): Geographically-dispersed servers that cache your files.</p>
+<h1 id="cache">Cache</h1>
+<h2 id="missed-cache-flow">Missed Cache flow</h2>
+<p>i.Edge Location Checked, ii. Regional Edge Checked iii. Origin Fetch</p>
+<h2 id="cache-behaviors">Cache behaviors</h2>
+<p><strong>Default cache behavior</strong> - required for all distributions.</p>
+<p>Additional cache behaviors to <strong>define responses based on requests</strong>. (Example: Match for specific path pattern, like <em>.png, and send to S3 origin) Cache behaviors use </em><em>one specific origin</em><em> based on settings. If you want to use </em><em>multiple origins</em><em>, you must have a </em><em>matching number of cache behaviors</em>*.</p>
+<h2 id="cache-behaviors-settings">Cache behaviors settings</h2>
+<ul>
+<li>Precedence - the order of precedence for evaluating behaviors (which cache behavior preferred over another)</li>
+<li>Path Pattern - request path pattern the cache behavior will apply to. Example: *.gif</li>
+<li>Origin/Origin Groups - which origin/origin group the request are routed to</li>
+<li>Viewer Protocol Policy - which protocol policy you want to use for edge locations</li>
+<li>Restrict Viewer Access - require use of signed URLs or signed cookies</li>
+</ul>
+<h1 id="tlshttp-implementation">TLS/HTTP implementation</h1>
+<ul>
+<li>supports CNAMEs</li>
+<li>supports SNI</li>
+<li>Native ACM integration. Certs MUST be issued in ua-east-1</li>
+</ul>
+<p><strong>Viewer protocol</strong> - protocol user uses</p>
+<p><strong>Origin protocol</strong> - cloudfront uses to connection to origins</p>
+<h1 id="status-codes">Status codes</h1>
+<p><strong>Always cached</strong>: 404, 414: Request-URL too large, 500, 501: Not Implemented, 502: Bad Gateway, 503: Service Unavailable, 504: Gateway Timeout</p>
+<p><strong>Conditionally Cached</strong>: 400: Bad Request, 403, 405: Method Not Allowed, 412: Precondition Failed, 415: Unsupported Media Type</p>
+<h1 id="origins">Origins</h1>
+<p>S3, EC2, ALB, Lambda, MediaStore, CloudFront Origin Group</p>
+<p>Origin access control (OAC) is the successor to an origin access identity (OAI)</p>
+<p>OAC supports actions: Using all S3 buckets in all AWS Regions, AWS KMS (SSE-KMS), Dynamic requests (PUT and DELETE) to S3</p>
+<p>OAC: 
+* Requires an Amazon S3 bucket origin that is NOT a website endpoint. 
+* Grant OAC access to bucket via the Amazon S3 bucket policy.
+* Must grant access to OAC manually for distribution.
+* OAC is a type of identity that is <strong>NOT</strong> a role or user.</p>
+<h1 id="private-viewer">Private viewer</h1>
+<p>Signed URLs (take precedence)</p>
+<p>Signed Cookies</p>
+<h1 id="cloudfront-field-level-encryption">CloudFront Field-Level Encryption</h1>
+<p>Additional layer of security for protecting data throughout a process/request within CloudFront.</p>
+<ul>
+<li>help to protect sensitive data within CloudFront</li>
+<li>Information is encrypted at the edge and remains encrypted throughout</li>
+<li>completely separate from the actual HTTP/S tunnels</li>
+<li>Uses a public and private key pair for all encryption/decryption</li>
+</ul>
+<h2 id="configuration-steps">Configuration steps</h2>
+<ul>
+<li>Cet your public and private key pair</li>
+<li>Create field-level encryption config</li>
+<li>Create field-level encryption profile</li>
+<li>Link to a cache behavior </li>
+</ul>
+<h1 id="cloudfront-geo-blocking">CloudFront Geo Blocking</h1>
+<h2 id="cloudfront-built-it-feature">CloudFront Built-it Feature</h2>
+<p>Restricts all access to files associated with a distribution. Restricts at a <strong>country</strong> level.</p>
+<ul>
+<li>allow list</li>
+<li>deny list</li>
+<li>returns 403.</li>
+<li>Third-party database leveraged that offers 99.8% accuracy</li>
+</ul>
+<h2 id="third-party-service">Third-Party Service</h2>
+<p>Restricts access to a subset of files. Usually allows for finer granularity than country-level restrictions.</p>
+<ul>
+<li>Restriction requirements that do not require entire countries</li>
+</ul>
+<h1 id="invalidating-and-expiring-files-within-amazon-cloudfront">Invalidating and Expiring Files within Amazon CloudFront</h1>
+<h2 id="control-caching-durations">Control Caching Durations</h2>
+<ul>
+<li>By default(24 hours), CloudFront servers a cached file until the specified cache duration.</li>
+<li>After expiration, <strong>origin fetch</strong> occurs to update cached data.</li>
+<li>Cache hit (returns 304 Not Modified): CloudFront has the lates version for immediate return.</li>
+<li>Cache miss (returns 200 Ok): CloudFront retrieves lates version from origin.</li>
+</ul>
+<h2 id="cache-ttl-header-examples">Cache TTL Header Examples</h2>
+<p>12-Hours TTL Using Cache-Control</p>
+<pre><code>Key: Cache Control
+Value: maxage:43200
+</code></pre>
+<p>Specific Data Using Expires</p>
+<pre><code>Key: Expires
+Value: Mon, 1 Jan 2024 06:00:00 GMT
+</code></pre>
+<h2 id="invalidate-files">Invalidate Files</h2>
+<p>Remove cached files to force origin fetch before specified object TTL.</p>
+<p>Two options:
+ - Invalidation: Specify the path you want to invalidate (URL/files/*.png)
+ - Versioning: Provide version names in files for best control (acloudguru_v3.png)</p>
+<h1 id="cloudfront-lambdas">CloudFront Lambdas</h1>
+<h2 id="lambda-at-edge">Lambda at Edge</h2>
+<ul>
+<li>lives within lambdas</li>
+<li>an extension of the AWS Lambda service</li>
+<li>must be in us-east-1</li>
+<li>executes at edge locations - precess request closer to viewers for reduced latency</li>
+<li>allows for interception of request and responses for customizations</li>
+<li>node.js or python</li>
+<li>scale automatically up to thousand request per sec</li>
+</ul>
+<h2 id="cloudfront-functions-overview">CloudFront Functions Overview</h2>
+<ul>
+<li>native functions that live entirely within CloudFront</li>
+<li>Can only be written in JavaScript</li>
+<li>Extremely <strong>similar use cases</strong> to Lambda@Edge</li>
+<li>Leverage CloudFront Functions and Lambda@Edge if desired</li>
+<li>Best latency - sub-millisecond startup and millions of request per second</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>
