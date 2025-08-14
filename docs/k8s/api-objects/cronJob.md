@@ -1,7 +1,8 @@
+````markdown
 # Job
 
 ```sh
-oc create job --dry-run=client -o yaml test \
+o=create job --dry-run=client -o yaml test \
   --image=registry.access.redhat.com/ubi8/ubi:8.6 \
   -- curl https://example.com
 ```
@@ -10,7 +11,7 @@ oc create job --dry-run=client -o yaml test \
 # CronJob
 
 ```sh
-oc create cronjob --dry-run=client -o yaml test \
+o=create cronjob --dry-run=client -o yaml test \
   --image=registry.access.redhat.com/ubi8/ubi:8.6 \
   --schedule='0 0 * * *' \
   -- curl https://example.com
@@ -37,3 +38,4 @@ data:
           /bin/bash -euxc 'crictl images ; crictl rmi --prune'
     done
 ```
+````

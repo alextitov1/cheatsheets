@@ -1,3 +1,4 @@
+````markdown
 **Kube-proxy** is a network proxy that __runs on each node__ in a Kubernetes cluster. It is responsible for managing network rules and facilitating communication between pods and services. Kube-proxy can operate in different modes, such as `iptables`, `ipvs`, or `userspace`, to handle traffic routing.
 
 ```sh
@@ -17,3 +18,4 @@ EOF
 kubectl get pods -n kube-system # kubeadm
 
 kubectl get daemonset -n kube-system
+````

@@ -1,3 +1,4 @@
+````markdown
 # Scheduler
 Scheduler is a control plane component that watches for newly created pods with no assigned node, and selects a node for them to run on.
 
@@ -77,3 +78,4 @@ spec:
 ```sh
 # Check scheduler logs
 kubectl logs my-custom-scheduler --namespace=kube-system
+````

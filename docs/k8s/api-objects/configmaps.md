@@ -1,3 +1,4 @@
+````markdown
 # ConfigMaps
 
 ConfigMaps are Kubernetes objects that allow you to store configuration data in key-value pairs. They can be used to decouple configuration artifacts from image content to keep containerized applications portable.
@@ -56,3 +57,4 @@ spec:
           name: my-config  # Reference to the ConfigMap
           key: key1  # Key in the ConfigMap
 ```
+````

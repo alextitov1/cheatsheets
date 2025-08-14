@@ -1,4 +1,6 @@
-NEXT: 03.34 - LAB: admission-controllers
+SKIPPED - 0.6 cluster maintenance - REVIEW
+SKIPPED - 0.7 security - REVIEW
+
 
 # Key Concepts
 

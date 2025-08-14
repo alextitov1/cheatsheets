@@ -1,3 +1,4 @@
+````markdown
 # Kubelet
 
 Kubelet - An agent that runs on each node in a Kubernetes cluster, responsible for managing the lifecycle of containers in pods. It ensures that the containers are running as expected, reports their status to the API server, and can also handle tasks like logging and monitoring.
@@ -25,3 +26,4 @@ EOF
 
 # Troubleshooting
 ps -aux | grep kubelet
+````
