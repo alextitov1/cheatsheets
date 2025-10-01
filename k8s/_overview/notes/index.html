@@ -1,0 +1,707 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/k8s/_overview/notes/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Notes - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#key-concepts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>SKIPPED - 0.6 cluster maintenance - REVIEW
+SKIPPED - 0.7 security - REVIEW</p>
+<h1 id="key-concepts">Key Concepts</h1>
+<ul>
+<li><strong>Master Node</strong>: Controls the Kubernetes cluster, managing the <strong>API server</strong>, <strong>scheduler</strong>, and <strong>controller manager</strong>.</li>
+<li><strong>Worker Node</strong>: Runs the applications and workloads, containing the <strong>kubelet</strong>, <strong>kube-proxy</strong> and <strong>container runtime</strong>.</li>
+<li><strong>Etcd</strong>: Key-value store for all cluster data, used by the <strong>API server</strong>.</li>
+<li><strong>Kube-scheduler</strong>: Assigns pods to nodes based on resource availability and constraints.</li>
+<li><strong>Controllers</strong>:<ul>
+<li><strong>Node Controller</strong>: Monitors the status of nodes.</li>
+<li><strong>Replication Controller</strong>: Ensures the desired number of pod replicas are running.</li>
+<li><strong>Endpoints Controller</strong>: Manages the endpoints for services.</li>
+<li><strong>Service Account &amp; Token Controllers</strong>: Create default service accounts and tokens for new namespaces.</li>
+</ul>
+</li>
+<li><strong>Api-server</strong>: The front-end for the Kubernetes control plane, handling REST requests and updates to etcd.</li>
+<li><strong>Container Runtime</strong>: Software responsible for running containers, such as Docker or containerd.</li>
+<li><strong>Kubelet</strong>: An agent that runs on each node, ensuring containers are running in pods.</li>
+<li><strong>Kube-proxy</strong>: Manages network rules for pod communication, enabling service discovery and load balancing.</li>
+</ul>
+<h1 id="pods">Pods</h1>
+<p>Pod is the smallest deployable unit in Kubernetes.</p>
+<pre><code class="language-sh">kubectl run nginx --image=nginx --restart=Never
+</code></pre>
+<pre><code class="language-yaml"># pod-definition.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
+</code></pre>
+<pre><code class="language-sh">kubectl apply -f pod-definition.yaml
+kubectl get pods
+</code></pre>
+<h1 id="deployments">Deployments</h1>
+<pre><code class="language-sh">kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+</code></pre>
+<h1 id="services">Services</h1>
+<p><strong>Service</strong> is an abstraction that defines a logical set of pods and a policy by which to access them.</p>
+<p>Service types:
+- <strong>ClusterIP</strong>: Exposes the service on a cluster-internal IP.
+- <strong>NodePort</strong>: Exposes the service on each node's IP at a static port.
+- <strong>LoadBalancer</strong>: Exposes the service externally using a cloud provider's load balancer</p>
+<pre><code class="language-yaml"># node-port-definition.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-service
+spec:
+    type: NodePort
+    ports:
+    - port: 80  # Service port (within the cluster)
+      targetPort: 80  # Port on the pod
+      nodePort: 30080  # Node port (external access)
+    selector:
+        app: nginx  # Select pods with this label
+        type: frontend  # Additional label for selection
+</code></pre>
+<pre><code class="language-yaml"># cluster-ip-definition.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-service
+spec:
+    type: ClusterIP # if not specified, defaults to ClusterIP
+    ports:
+    - port: 80  # Service port (within the cluster)
+      targetPort: 80  # Port on the pod
+    selector:
+        app: nginx  # Select pods with this label
+        type: frontend  # Additional label for selection
+</code></pre>
+<pre><code class="language-yaml"># load-balancer-definition.yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-service
+spec:
+    type: LoadBalancer  # Exposes the service externally using a cloud provider's load balancer
+    ports:
+    - port: 80  # Service port (within the cluster)
+      targetPort: 80  # Port on the pod
+      nodePort: 30080  # Node port (external access)
+</code></pre>
+<h1 id="labels-and-selectors-and-annotations">Labels and Selectors and Annotations</h1>
+<p>Labels - used to organize and select resources in Kubernetes.</p>
+<p>Annotations - used to store additional metadata about resources.</p>
+<pre><code class="language-sh">kubectl get pods --selector app=nginx
+
+kubectl get all --selector app=nginx,type=frontend
+
+</code></pre>
+<h1 id="taints-and-tolerations">Taints and Tolerations</h1>
+<p><strong>Taint</strong> is a node property that prevents pods from being scheduled.</p>
+<p><strong>Toleration</strong> is a pod property that allows it to be scheduled on nodes with specific taints.</p>
+<pre><code class="language-sh">kubectl taint node node1 key=value:NoSchedule{PreferNoSchedule,NoExecute}
+
+#untaint
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+</code></pre>
+<pre><code class="language-yaml"># pod-with-toleration.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+  tolerations:
+  - key: &quot;key&quot;
+    operator: &quot;Equal&quot;
+    value: &quot;value&quot;
+    effect: &quot;NoSchedule&quot;
+</code></pre>
+<h1 id="node-selectors-and-affinity">Node Selectors and Affinity</h1>
+<pre><code class="language-yaml"># pod-with-node-selector.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+  nodeSelector:
+    disktype: ssd  # Node label to select
+</code></pre>
+<pre><code class="language-yaml"># pod-with-affinity.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd  # Node label to select
+</code></pre>
+<h1 id="resource-requests-and-limits">Resource Requests and Limits</h1>
+<p>0.1 CPU = 100m CPU # means 100 milli CPU</p>
+<p>1 CPU = 1000m CPU</p>
+<pre><code class="language-yaml"># pod-with-resources.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    resources:
+      requests:
+        memory: &quot;64Mi&quot;  # Minimum memory required
+        cpu: &quot;250m&quot;  # Minimum CPU required
+      limits:
+        memory: &quot;128Mi&quot;  # Maximum memory allowed
+        cpu: &quot;500m&quot;  # Maximum CPU allowed
+</code></pre>
+<h2 id="limit-ranges">Limit Ranges</h2>
+<p>sets on a namespace level</p>
+<pre><code class="language-yaml"># limit-range.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: my-limit-range
+spec:
+  limits:
+  - default:
+      memory: &quot;256Mi&quot;
+      cpu: &quot;500m&quot;
+    defaultRequest:
+      memory: &quot;128Mi&quot;
+      cpu: &quot;250m&quot;
+    type: Container
+</code></pre>
+<h2 id="resource-quotas">Resource Quotas</h2>
+<p>Resource quotas limit the total resources that can be consumed in a namespace.</p>
+<pre><code class="language-yaml"># resource-quota.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: my-resource-quota
+spec:
+  hard:
+    requests.cpu: &quot;10&quot;  # Total CPU requests allowed
+    requests.memory: &quot;20Gi&quot;  # Total memory requests allowed
+    limits.cpu: &quot;20&quot;  # Total CPU limits allowed
+    limits.memory: &quot;40Gi&quot;  # Total memory limits allowed
+    pods: &quot;10&quot;  # Total number of pods allowed
+    services: &quot;5&quot;  # Total number of services allowed
+</code></pre>
+<h1 id="static-pods">Static Pods</h1>
+<p>Static pods are managed directly by the <code>kubelet</code> on a node, not by the Kubernetes API server.
+They can be used for deploying kubernetes system components or other critical applications that need to run on specific nodes.</p>
+<p>kubelet watches this directory <code>/etc/kubernetes/manifests</code> for pod definitions. (directory can be configured)</p>
+<ul>
+<li>
+<p><code>--pod-manifest-path</code> option can be used to specify a different directory.</p>
+</li>
+<li>
+<p><code>staticPodPath</code> option in kubelet configuration file can also be used to specify the directory.</p>
+</li>
+</ul>
+<h1 id="cli-commands">Cli Commands</h1>
+<p>```sh</p>
+<h1 id="create-an-nginx-pod">Create an NGINX Pod</h1>
+<p>kubectl run nginx --image=nginx</p>
+<h1 id="generate-pod-manifest-yaml-file-o-yaml-dont-create-it-dry-run">Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)</h1>
+<p>kubectl run nginx --image=nginx --dry-run=client -o yaml</p>
+<h1 id="create-a-deployment">Create a deployment</h1>
+<p>kubectl create deployment --image=nginx nginx</p>
+<h1 id="generate-deployment-yaml-file-o-yaml-dont-create-it-dry-run">Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)</h1>
+<p>kubectl create deployment --image=nginx nginx --dry-run=client -o yaml</p>
+<h1 id="generate-deployment-yaml-file-o-yaml-dont-create-itdry-run-and-save-it-to-a-file">Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run) and save it to a file.</h1>
+<p>kubectl create deployment --image=nginx nginx --dry-run=client -o yaml &gt; nginx-deployment.yaml</p>
+<h1 id="make-necessary-changes-to-the-file-for-example-adding-more-replicas-and-then-create-the-deployment">Make necessary changes to the file (for example, adding more replicas) and then create the deployment.</h1>
+<p>kubectl create -f nginx-deployment.yaml</p>
+<p>specify the --replicas option to create a deployment with 4 replicas.</p>
+<p>kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml &gt; nginx-deployment.yaml</p>
+<h1 id="set-a-label-on-a-node">Set a label on a node</h1>
+<p>kubectl label node node01 color=blue</p>
+<h1 id="create-daemonset">Create DaemonSet</h1>
+<p>kubectl create create daemonset my-daemonset --image=nginx</p>
+<h1 id="check-the-differences-between-live-objects-and-manifests">Check the differences between live objects and manifests</h1>
+<p>kubectl diff -f my-app/example-deployment.yaml</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>

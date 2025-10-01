@@ -1,0 +1,649 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/k8s/labs/EX328/installing/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Installing Service Mesh on OpenShift - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-service-mesh-on-openshift" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing Service Mesh on OpenShift
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-resource-definitions-crds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Resource Definitions (CRDs)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-kubernetes-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining Kubernetes Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-service-mesh-on-openshift_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Service Mesh on OpenShift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Service Mesh on OpenShift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-required-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Required Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-the-control-plane-also-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying the Control Plane (also operator)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-service-mesh-member-roll" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Service Mesh Member Roll
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-service-mesh-with-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Service Mesh with the CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-the-service-mesh-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy the Service Mesh Operator
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="installing-service-mesh-on-openshift">Installing Service Mesh on OpenShift</h1>
+<h2 id="custom-resource-definitions-crds">Custom Resource Definitions (CRDs)</h2>
+<p>A resource - is a Kubernetes API endpoint that stores objects of the same kind.</p>
+<p>A Custom Resource Definition (CRD) describes a custom resource used to extend the Kubernetes API. This feature supports custom object definitions, using them as native Kubernetes objects.</p>
+<p>CRD definition example:</p>
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com  # Name of the CRD, must be in the format `&lt;plural&gt;.&lt;group&gt;`
+spec:
+  group: stable.example.com  # Name to use in the REST API
+  version: v1
+  scope: Namespaced  # Defines the scope of the CRD
+  names:
+    plural: crontabs  # Plural name used in the REST API
+    singular: crontab  # Singular name of the CRD. Used in the CLI and REST API.
+    kind: CronTab  # Type of objects managed by the CRD
+    shortNames:  # Short names for the CRD, used in the CLI
+      - ct
+</code></pre>
+<p>After a CRD is created, Kubernetes enables a new RESTful API endpoint to managed it.</p>
+<p>The endpoint created for the preceded example is:</p>
+<pre><code>/apis/stable.example.com/v1/namespaces/{namespace}/crontabs
+</code></pre>
+<h2 id="defining-kubernetes-operators">Defining Kubernetes Operators</h2>
+<p>A Kubernetes operator packages a Kubernetes application to automate installation, updates, and management. Operators rely on <em>Custom Resource Definitions</em> to extend the Kubernetes API.</p>
+<p>Operators run on a pod, and monitor the application to ensure it performs as expected.</p>
+<h2 id="installing-service-mesh-on-openshift_1">Installing Service Mesh on OpenShift</h2>
+<p>OpenShift Service Mesh is installed using the Web Console, or CLI, and a Kubernetes operator. The installation process requires first installing the <strong>required operators</strong>, then deploying the <strong>Control Plane</strong>, and finally creating a <strong>Service Mesh Member Roll</strong>.</p>
+<h3 id="installing-required-operators">Installing Required Operators</h3>
+<p>OpenShift Service Mesh relies on the following operators:</p>
+<ul>
+<li>
+<p><code>Jaeger</code> - provides tracing features to <strong>monitor</strong> and <strong>troubleshoot applications</strong>.</p>
+</li>
+<li>
+<p><code>Kiali</code> - provides observability to the service mesh through a <strong>web user interface</strong>.</p>
+</li>
+<li>
+<p><code>Elasticsearch</code> - <strong>Stores</strong> traces and logs generated by Jaeger.</p>
+</li>
+</ul>
+<h3 id="deploying-the-control-plane-also-operator">Deploying the Control Plane (also operator)</h3>
+<p>The control plane manages the configuration and policies for the service mesh. (The OpenShift Service Mesh Operator installation makes the operators available in all namespaces, so you can install the control plane in any project.))
+To deploy a control plane in a project with the web UI, first navigate to the Installed Operators page, then to the Istio Service Mesh Control Plane page, and finally review and configure deployment parameters.</p>
+<h3 id="creating-a-service-mesh-member-roll">Creating a Service Mesh Member Roll</h3>
+<p>The ServiceMeshMemberRoll custom resource defines the projects belonging to <strong>a control plane</strong>.</p>
+<p>Any number of projects can be added to a ServiceMeshMemberRoll, however a project can be added only to one control plane.</p>
+<p>To create or edit a Service Mesh Member Roll, first navigate to the project where Red Hat OpenShift Service Mesh is installed, then navigate to the Istio Service Mesh Member Roll page, and finally review and configure installation parameters.</p>
+<h2 id="installing-service-mesh-with-the-cli">Installing Service Mesh with the CLI</h2>
+<blockquote>
+<p>subscription - The subscription is a custom resource that defines the operator to install, and the channel to use for updates. The channel defines the version of the operator to install.</p>
+</blockquote>
+<pre><code class="language-sh">oc login -u developer -p redhat https://api.ocp4.example.com:6443
+
+# clean up previous installations
+oc delete smcp --all
+
+oc -n openshift-operators get subs
+oc -n openshift-operators-redhat get subs
+oc -n openshift-operators delete sub jaeger-product kiali-ossm servicemeshoperator
+oc -n openshift-operators-redhat delete sub elasticsearch-operator
+
+oc delete project istio-system
+
+# verify the operators are deleted
+oc get csv
+oc get -n openshift-operators-redhat pods
+</code></pre>
+<h2 id="deploy-the-service-mesh-operator">Deploy the Service Mesh Operator</h2>
+<pre><code class="language-yaml">apiVersion: v1
+kind: List
+metadata: {}
+items:
+    - apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: servicemesh-operators
+    - apiVersion: operators.coreos.com/v1alpha1
+      kind: OperatorGroup
+      metadata:
+        name: servicemesh-operators
+        namespace: servicemesh-operators
+      spec: {}
+    - apiVersion: operators.coreos.com/v1alpha1
+      kind: Subscription
+      metadata:
+        name: elasticsearch-operator
+        namespace: servicemesh-operators
+      spec:
+        channel: &quot;4.6&quot;
+        installPlanApproval: Automatic
+        name: elasticsearch-operator
+        source: ossm-catalog
+        sourceNamespace: openshift-marketplace
+# incomplete...
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../../search/main.js"></script>
+      
+    
+  </body>
+</html>

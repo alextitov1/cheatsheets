@@ -1,0 +1,848 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/ansible/do374-7-1/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Ch.7 Transforming Data with Filters and Plug-ins - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch7-transforming-data-with-filters-and-plug-ins" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch.7 Transforming Data with Filters and Plug-ins
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ansible-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ansible data types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-variables-with-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Variables with Filters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing Variables with Filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int-and-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      int and float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manipulating-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating Lists
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating Dictionaries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashing-encoding-and-manipulating-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hashing, Encoding, and Manipulating Strings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating Data Structures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-and-encoding-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parsing and Encoding Data Structures
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ch7-transforming-data-with-filters-and-plug-ins">Ch.7 Transforming Data with Filters and Plug-ins</h1>
+<h2 id="ansible-data-types">Ansible data types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>A sequence of characters.</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>A numeric value.</td>
+</tr>
+<tr>
+<td>Booleans</td>
+<td>True or false values.</td>
+</tr>
+<tr>
+<td>Dates</td>
+<td>ISO-8601 calendar date.</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>The variable become undefined.</td>
+</tr>
+<tr>
+<td>Lists or Arrays</td>
+<td>A sorted collection of values.</td>
+</tr>
+<tr>
+<td>Dictionaries</td>
+<td>A collection of key-value pairs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="processing-variables-with-filters">Processing Variables with Filters</h2>
+<p>Ansible applies variable values to playbooks and templates by using Jinja2 expressions.</p>
+<p>Some filters are provided by the Jinja2 language; others are included with Red Hat Ansible Automation Platform as plug-ins.</p>
+<p>Get help for filters from ansible collections</p>
+<pre><code class="language-sh">ansible-doc -t filter -l
+ansible-doc -t filter dict2items
+</code></pre>
+<h3 id="default">Default</h3>
+<pre><code class="language-yaml">- name: Manage user
+  ansible.builtin.user:
+    name: &quot;{{ item['name'] }}&quot;
+    groups: &quot;{{ item['groups'] | default(omit) }}&quot; # if the groups key is not defined for the item var
+    system: &quot;{{ item['system'] | default(false) }}&quot;
+    shell: &quot;{{ item['shell'] | default('/bin/bash') }}&quot;
+    state: &quot;{{ item['state'] | default('present') }}&quot;
+    remove: &quot;{{ item['remove'] | default(false) }}&quot;
+  loop: &quot;{{ user_list }}&quot;
+</code></pre>
+<p>The <code>default</code> filter only provides a value if a variable in not defined.</p>
+<p>Passing <code>true</code> as the second parameter will return the default value if the value is defined but <code>blank</code> or evaluates to the <code>false</code> boolean value.</p>
+<pre><code class="language-yaml">---
+- name: Default filter examples
+  hosts: localhost
+  tasks:
+    - name: Default filter examples
+      vars:
+        pattern: &quot;some text&quot;
+      ansible.builtin.debug:
+        msg: &quot;{{ item }}&quot;
+      loop:
+        - &quot;{{ pattern | regex_search('test') | default('MESSAGE') }}&quot; # Because the regular expression is not found in the variable, the regex_search filter returns an empty string. The default filter is not used.
+        - &quot;{{ pattern | regex_search('test') | default('MESSAGE', true) }}&quot; # Although the regex_search filter returns an empty string, the default filter is used because it includes true.
+        - &quot;{{ pattern | bool | default('MESSAGE') }}&quot; # Because the string evaluates to the false Boolean, the default filter is not used.
+        - &quot;{{ pattern | bool | default('MESSAGE', true) }}&quot; # Although the string evaluates to the false Boolean, the default filter is used because it includes true.
+
+- name: Ensure httpd packages are installed
+  ansible.builtin.yum:
+    name: &quot;{{ apache_package_list }}&quot;
+    state: present
+    enablerepo: &quot;{{ apache_enablerepos_list | default(omit, true) }}&quot;
+
+</code></pre>
+<h3 id="int-and-float"><strong>int</strong> and <strong>float</strong></h3>
+<p>the following Jinja2 expression increments the current hour value, which is collected as a fact and stored as a string, not an integer:</p>
+<pre><code class="language-yaml">{{ ( ansible_facts['date_time']['hour'] | int ) + 1 }}
+</code></pre>
+<h3 id="mathematical-operations">Mathematical operations</h3>
+<p><code>log</code>, <code>pow</code>, <code>root</code>, <code>abs</code>, <code>round</code></p>
+<p><code>root</code> - square root of the variable or value.</p>
+<pre><code class="language-yaml">{{ 1764 | root }}
+</code></pre>
+<h3 id="manipulating-lists">Manipulating Lists</h3>
+<p><code>max</code>, <code>min</code> or <code>sum</code></p>
+<pre><code class="language-yaml">{{ [2, 4, 6, 8, 10, 12] | sum }}
+</code></pre>
+<p>extracting list elements</p>
+<pre><code class="language-yaml">- name: All three of these assertions are true
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ [ 2, 4, 6, 8, 10, 12 ] | length }} is eq( 6 )&quot;
+      - &quot;{{ [ 2, 4, 6, 8, 10, 12 ] | first }} is eq( 2 )&quot;
+      - &quot;{{ [ 2, 4, 6, 8, 10, 12 ] | last }} is eq( 12 )&quot;
+</code></pre>
+<p><code>random</code> - returns a random element</p>
+<pre><code class="language-yaml">{{ ['Douglas', 'Marvin', 'Arthur'] | random }}
+</code></pre>
+<p>modifying the order of list elements</p>
+<p><code>shuffle</code> - returns a list with the elements in a random order</p>
+<pre><code class="language-yaml">- name: reversing and sorting lists
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ [ 2, 4, 6, 8, 10 ] | reverse }} is eq( [ 10, 8, 6, 4, 2] )&quot;
+      - &quot;{{ [ 4, 8, 10, 6, 2 ] | sort }} is eq( [ 2, 4, 6, 8, 10 ] )&quot;
+</code></pre>
+<p>merging lists</p>
+<p><code>flatten</code> - recursively takes any inner list in the input list value, and adds the inner values to the outer list.</p>
+<pre><code class="language-yml">- name: Flatten turns nested lists on the left to list on the right
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ [ 2, [4, [6, 8]], 10 ] | flatten }} is eq( [ 2, 4, 6, 8, 10] )&quot;
+</code></pre>
+<p>Operating on Lists as Sets</p>
+<pre><code class="language-yaml">- name: The 'unique' filter leaves unique elements
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ [ 1, 1, 2, 2, 2, 3, 4, 4 ] | unique }} is eq( [ 1, 2, 3, 4 ] )&quot;
+</code></pre>
+<p><code>unique</code> - ensure that a list has no duplicate elements.
+<code>union</code> - returns a set with elements form both input sets.
+<code>intersect</code> - returns a set with elements common to both sets.
+<code>difference</code> - returns a set with elements from the first set that are not present in the second set</p>
+<pre><code class="language-yaml">- name: The 'difference' filter provides elements not in specified set
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ [2, 4, 6, 8, 10] | difference([2, 4, 6, 16]) }} is eq( [8, 10] )&quot;
+</code></pre>
+<h2 id="manipulating-dictionaries">Manipulating Dictionaries</h2>
+<p>joining Dictionaries</p>
+<p><code>combine</code> - joins two dictionaries.</p>
+<pre><code class="language-yaml">- name: The 'combine' filter combines two dictionaries into one
+  vars:
+    expected:
+      A: 1
+      B: 4
+      C: 5
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ {'A':1,'B':2} | combine({'B':4,'C':5}) }} is eq( expected )&quot;
+# Entries from the second dict have higher priority
+</code></pre>
+<p>converting Dictionaries</p>
+<p><code>dict2items</code> - filter to convert a dictionary to a list.
+<code>items2dict</code> - convert a list to a dictionary.</p>
+<pre><code class="language-yaml">- name: converting between dictionaries and lists
+  vars:
+    characters_dict:
+      Douglas: Human
+      Marvin: Robot
+      Arthur: Human
+    characters_items:
+      - key: Douglas
+        value: Human
+      - key: Marvin
+        value: Robot
+      - key: Arthur
+        value: Human
+  ansible.builtin.assert:
+    that:
+      - &quot;{{ characters_dict | dict2items }} is eq( characters_items )&quot;
+      - &quot;{{ characters_items | items2dict }} is eq( characters_dict )&quot;
+</code></pre>
+<h2 id="hashing-encoding-and-manipulating-strings">Hashing, Encoding, and Manipulating Strings</h2>
+<p><code>hash</code> - returns the hash value of the input string</p>
+<pre><code class="language-yaml">- name: the string's SHA-1 hash
+  vars:
+    expected: '8bae3f7d0a461488ced07b3e10ab80d018eb1d8c'
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ 'Arthur' | hash('sha1') }}' is eq( expected )&quot;
+</code></pre>
+<p><code>password_hash</code> - generates password hashes</p>
+<pre><code>{{ 'secret_password' | password_hash('sha512') }}
+</code></pre>
+<p><code>b64encode</code> - translate binary data to Base64
+<code>b64decode</code> - encoded data back to binary data</p>
+<pre><code class="language-yaml">- name: Base64 encoding and decoding of values
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ 'âÉïôú' | b64encode }}' is eq( 'w6LDicOvw7TDug==' )&quot;
+      - &quot;'{{ 'w6LDicOvw7TDug==' | b64decode }}' is eq( 'âÉïôú' )&quot;
+</code></pre>
+<p><code>quote</code> - sanitize a string by using quote</p>
+<pre><code class="language-yaml">- name: Put quotes around 'my_string'
+  shell: echo {{ my_string | quote }}
+</code></pre>
+<p>formatting Text</p>
+<pre><code class="language-yaml">- name: Change case of characters
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ 'Marvin' | lower }}' is eq( 'marvin' )&quot;
+      - &quot;'{{ 'Marvin' | upper }}' is eq( 'MARVIN' )&quot;
+      - &quot;'{{ 'marvin' | capitalize }}' is eq( 'Marvin' )&quot;
+</code></pre>
+<p>replacing Text</p>
+<pre><code class="language-yaml">- name: Replace 'ar' with asterisks
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ 'marvin, arthur' | replace('ar','**') }}' is eq( 'm**vin, **thur' )&quot;
+</code></pre>
+<p><code>regex_search</code>  - complex search
+<code>regex_replace</code> - complex replacements</p>
+<pre><code class="language-yaml">- name: Test results of regex search and search-and-replace
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ 'marvin, arthur' | regex_search('ar\S*r') }}' is eq( 'arthur' )&quot;
+      - &quot;'{{ 'arthur up' | regex_replace('ar(\S*)r','\\1mb') }}' is eq( 'thumb up' )&quot;
+</code></pre>
+<h2 id="manipulating-data-structures">Manipulating Data Structures</h2>
+<p>Many data structures used by Ansible are in JSON format.</p>
+<p><code>selectattr</code> - selects a sequence of objects based on attributes of the objects in the list.</p>
+<p><code>map</code> - turns a list of dictionaries into a simple list based on a given attribute.</p>
+<blockquote>
+<p>Although the community.general collection provides the json_query filter, you can usually achieve the same functionality using the <code>selectattr</code> and <code>map</code> filters.</p>
+</blockquote>
+<pre><code class="language-yaml">---
+- name: Query automation controller execution environments
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Query EEs
+      vars:
+        username_password: &quot;admin:redhat&quot;
+      ansible.builtin.uri:
+        url: https://controller.lab.example.com/api/v2/execution_environments/
+        method: GET
+        headers:
+          Authorization: Basic {{ username_password | string | b64encode }}
+        validate_certs: false
+      register: query_results
+
+    - name: Show execution environment ID
+      ansible.builtin.debug:
+        msg: &quot;{{ query_results['json']['results'] | selectattr('name', '==', 'Control Plane Execution Environment') | map(attribute='id') | first }}&quot;
+
+---
+- name: Find deployed webapp files
+  ansible.builtin.find:
+    paths: &quot;{{ webapp_content_root_dir }}&quot;
+    recurse: true
+  register: webapp_find_files
+
+- name: Compute the webapp file list
+  ansible.builtin.set_fact:
+    webapp_deployed_files: &quot;{{ webapp_find_files['files'] | map(attribute='path') | list }}&quot;
+
+# Alternatively you can let it invoke a filter by passing the name of the filter and the arguments afterwards
+- name: Compute the relative webapp file list
+  ansible.builtin.set_fact:
+    webapp_rel_deployed_files: &quot;{{ webapp_deployed_files | map('relpath', webapp_content_root_dir) | list }}&quot;
+
+</code></pre>
+<h2 id="parsing-and-encoding-data-structures">Parsing and Encoding Data Structures</h2>
+<p><code>to_json</code>
+<code>to_yaml</code>
+<code>to_nice_json</code>
+<code>to_nice_yaml</code></p>
+<pre><code class="language-yaml">- name: Convert between JSON and YAML format
+  vars:
+    hosts:
+      - name: bastion
+        ip:
+          - 172.25.250.254
+          - 172.25.252.1
+    hosts_json: '[{&quot;name&quot;: &quot;bastion&quot;, &quot;ip&quot;: [&quot;172.25.250.254&quot;, &quot;172.25.252.1&quot;]}]'
+  ansible.builtin.assert:
+    that:
+      - &quot;'{{ hosts | to_json }}' is eq( hosts_json )&quot;
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
