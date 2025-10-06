@@ -1,4 +1,4 @@
-````markdown
+
 * CRI (Container Runtime Interface)
 cri - Interface between Kubernetes and container runtimes, allowing Kubernetes to use different container runtimes like Docker, containerd, or CRI-O.
 
@@ -48,4 +48,4 @@ spec:
         path: /data
 ```
 
-````
+
