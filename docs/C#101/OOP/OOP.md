@@ -35,6 +35,7 @@ public class Stack<T>
     }
 }
 ```
+
 ```C#
 public class Stack: BaseStack
 {

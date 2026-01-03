@@ -1,5 +1,14 @@
 # CNI (Container Network Interface)
 
+```
+# CNI Configuration Directory
+/etc/cni/net.d/
+
+# CNI Binary Directory
+/opt/cni/bin
+```
+
+
 Container Runtime:
 
 - Container Runtime must create network namespace
@@ -25,7 +34,5 @@ CNI comes with supported plugins:
 
 Docker does not support CNI, but supports CNM (Container Network Model)
 
-```
-/etc/cni/net.d/
-```
-````
+
+

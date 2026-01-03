@@ -3,25 +3,26 @@
 {
 	// "name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "mcr.microsoft.com/devcontainers/base:bullseye",
-	"build": {
-		"dockerfile": "Containerfile"
-	},
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm",
+	// "build": {
+	// 	"dockerfile": "Containerfile"
+	// },
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"yzhang.markdown-all-in-one",
 				"streetsidesoftware.code-spell-checker",
-				"GitHub.copilot-chat"
+				"GitHub.copilot-chat",
+				"GitHub.copilot"
 			]
 		}
-	},
-	"remoteUser": "root",
-	"containerUser": "vscode",
-	"workspaceMount": "",
-	"runArgs": [
-		"--volume=${localWorkspaceFolder}:/workspaces/${localWorkspaceFolderBasename}:Z"
-	]
+	}
+	// "remoteUser": "root",
+	// "containerUser": "vscode",
+	// "workspaceMount": "",
+	// "runArgs": [
+	// 	"--volume=${localWorkspaceFolder}:/workspaces/${localWorkspaceFolderBasename}:Z"
+	// ]
 	// "runArgs": [
 	// 	"--userns=''"
 	// ]

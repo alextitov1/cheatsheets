@@ -7,9 +7,9 @@ Kustomize works on directories that contain a `kustomization.yaml` file at the r
 
 ## Base
 
-A base directory contains a `kustomization.yml` file.
+A base directory contains a `kustomization.yaml` file.
 
-```
+```sh
 # a structure of base directory
 base
 ├── configmap.yaml
@@ -17,7 +17,8 @@ base
 ├── secret.yaml
 ├── service.yaml
 ├── route.yaml
-└── kustomization.yaml
+└── kustomization.yaml # main kustomization file
+
 overlay
 └── development
     └── kustomization.yaml
@@ -29,9 +30,9 @@ overlay
 ```
 
 ```yaml
-# kustomization.yml (base direcotry)
+# kustomization.yaml (base directory)
 apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomizatio
+kind: Kustomization
 resources:
 - configmap.yaml
 - deployment.yaml
@@ -39,6 +40,60 @@ resources:
 - service.yaml
 - route.yaml
 ```
+
+## Examples
+
+```sh
+kustomize build ./base
+
+kubectl apply -k ./base 
+```
+
+## Transformers
+
+### Common transformations
+
+- commonLabels
+- commonAnnotations
+- namePrefix/Suffix
+- namespace
+
+```yaml
+# kustomization.yaml
+commonLabels:
+  app: my-app
+namePrefix: dev-
+namespace: development
+commonAnnotations:
+  environment: development
+```
+
+### Image Transformers
+
+```yaml
+# kustomization.yaml
+images:
+  - name: nginx
+    newName: nginxinc/nginx
+    newTag: 1.19.0
+```
+
+## Patches
+
+```yaml
+# kustomization.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: my-app
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: my-app-dev
+```
+
+- json 6902 Patch
+- strategic merge patch
 
 ## Overlays
 

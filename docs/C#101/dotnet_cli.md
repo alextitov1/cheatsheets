@@ -19,7 +19,7 @@ dotnet new console --output folder1/folder2/myapp
 dotnet new console --framework net5.0
 ```
 
-```
+```sh
 // add project to a solution
 dotnet sln add folder1/folder2/myapp
 

@@ -26,3 +26,17 @@ Console.WriteLine($"The range of integers is {min} to {max}");
 | decimal | System.Decimal | Yes        | 12 bytes   | 1.0x10-28 to 7.9x1028                       |
 | char    | System.Char    |            | 2 bytes    | Unicode characters                          |
 | boolean | System.Boolean |            | 1 byte     | True or false                               |
+
+Declare int variable:
+```C#
+using System;
+class EasyCSharp
+{
+    public static void Main()
+    {
+        int i;
+        i = 10;
+        Console.WriteLine(i);
+    }
+}
+```
