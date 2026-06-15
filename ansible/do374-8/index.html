@@ -1,0 +1,634 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/ansible/do374-8/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Ch.8 Rolling Updates - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch8-rolling-updates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch.8 Rolling Updates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delegating-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegating Tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegating-to-execution-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegating to Execution Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegating-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegating Facts
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ch8-rolling-updates">Ch.8 Rolling Updates</h1>
+<h2 id="delegating-tasks">Delegating Tasks</h2>
+<p>In a play, you can delegate a task to run on <code>another host</code> instead of the current <code>managed host</code>.</p>
+<p><code>delegate_to</code> - this directive points Ansible to the host that executes the task instead of the current managed host.</p>
+<pre><code class="language-yaml">---
+- name: Delegation Example
+  hosts: demo.lab.example.com
+  become: false
+
+  tasks:
+    - name: Get system information
+      ansible.builtin.command: uname -a
+      register: managed_host
+
+    - name: Display demo system information
+      ansible.builtin.debug:
+        var: managed_host
+
+    - name: Get system information
+      ansible.builtin.command: uname -a
+      delegate_to: host.lab.example.com
+      register: delegated
+
+    - name: Display localhost system information
+      ansible.builtin.debug:
+        var: delegated
+</code></pre>
+<pre><code class="language-yaml">- name: Remove the server from HAProxy
+    community.general.haproxy:
+    state: disabled
+    host: &quot;{{ ansible_facts['fqdn'] }}&quot;
+    socket: /var/lib/haproxy/stats
+    delegate_to: &quot;{{ item }}&quot;
+    loop: &quot;{{ groups['lbservers'] }}&quot;
+
+- name: Make sure Apache HTTPD is stopped
+    ansible.builtin.service:
+    name: httpd
+    state: stopped
+</code></pre>
+<pre><code class="language-yaml">- name: Access the web service
+    uri:
+    url: http://{{ ansible_facts['fqdn'] }}
+    timeout: 5
+    delegate_to: test-client.example.com
+</code></pre>
+<h2 id="delegating-to-execution-environments">Delegating to Execution Environments</h2>
+<p>One of the most common uses of delegation is to run tasks on a <code>control node</code> instead of a <code>managed host</code>.</p>
+<pre><code class="language-yaml">- name: Get information about controller instance
+    ansible.builtin.uri:
+    url: https://{{ ansible_facts['fqdn'] }}/api/v2/ping/
+    method: GET
+    validate_certs: no
+    return_content: yes
+    delegate_to: localhost
+    register: controller_ping
+</code></pre>
+<h2 id="delegating-facts">Delegating Facts</h2>
+<p>When you delegate a task, Ansible uses the host variable and facts for the managed host(the current inventory_hostname) for which the task is running.</p>
+<p><code>delegate_facts</code> - assigns the facts collected by a <code>delegated task</code> to the <code>host</code> to which the task was delegated.</p>
+<pre><code class="language-yaml">- name: Delegate Fact Example
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Set a fact in delegated task on demo
+      ansible.builtin.set_fact:
+        myfact: Where am I set?
+      delegate_to: demo.lab.example.com
+      delegate_facts: true
+
+    - name: Display the facts from demo.lab.example.com
+      ansible.builtin.debug:
+        msg: &quot;{{ hostvars['demo.lab.example.com']['myfact'] }}&quot;
+</code></pre>
+<h1 id="parallelism">Parallelism</h1>
+<h2 id="forks">Forks</h2>
+<p>When Ansible processes a playbook, it runs each play in order. After determining the list of hosts for the play, Ansible runs through each task in order. Normally, all hosts must successfully complete a task before any host starts the next task in the play.</p>
+<p>In theory, Ansible could connect to all hosts in the play simultaneously for each task. This approach works fine for small lists of hosts, but if the play targets hundreds of hosts, it can put a heavy load on the control node.</p>
+<p><code>forks</code> - controls the number of hosts that Ansible connects to simultaneously.</p>
+<pre><code class="language-sh">[user@host]$ ansible-navigator config dump -m stdout
+...output omitted...
+DEFAULT_FORCE_HANDLERS(default) = False
+DEFAULT_FORKS(default) = 5
+DEFAULT_GATHERING(default) = implicit
+...output omitted...
+</code></pre>
+<h2 id="serial">Serial</h2>
+<p>Normally, when Ansible runs a play, it ensure that all managed hosts complete each task before it starts the next task. After all managed hosts have completed all tasks, then any notified handlers are run.</p>
+<p>However, running all tasks on all hosts can lead to undesirable behavior. For example, if a play updates a cluster of load-balanced web servers, it might need to take each web server out of service during the update. If all the servers are updated in the same play, they could all be out of service simultaneously.</p>
+<p><code>serial</code> - controls the number of hosts that Ansible connects to simultaneously.</p>
+<pre><code class="language-yaml"># Ansible first runs the tasks (and handlers) on the first two managed hosts
+---
+- name: Rolling update
+  hosts: webservers
+  serial:
+    - 2
+    - 25%
+# If unprocessed hosts remain after the last batch corresponding to the previous serial directive entry, the last batch repeats until all hosts are processed.
+  tasks:
+    - name: Latest apache httpd package is installed
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+      notify: restart apache
+
+  handlers:
+    - name: Restart apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+</code></pre>
+<h2 id="aborting-the-play">Aborting the Play</h2>
+<p><code>ansible_play_batch</code> - contains the list of hosts that Ansible is currently processing.</p>
+<p><code>max_fail_percentage</code> - specifies the maximum percentage of hosts that can fail before Ansible aborts the play.</p>
+<p>To summarize the Ansible failure behavior:</p>
+<ul>
+<li>If the serial directive and the max_fail_percentage values are not defined, all hosts are run through the play in one batch. If all hosts fail, then the play fails.</li>
+<li>If the serial directive is defined, then hosts are run through the play in multiple batches, and the play fails if all hosts in any one batch fail.</li>
+<li>If the max_fail_percentage directive is defined, the play fails if more than that percentage of hosts in a batch fail.</li>
+</ul>
+<p>If a play fails, Ansible aborts all remaining plays in the playbook.</p>
+<h2 id="running-a-task-once">Running a Task Once</h2>
+<p><code>run_once</code> - runs a task only once(one host per batch), even if the play targets multiple hosts.</p>
+<pre><code class="language-yaml">- name: Reactivate Hosts
+  ansible.builtin.shell: /sbin/activate.sh {{ active_hosts_string }}
+  run_once: true
+  delegate_to: monitor.example.com
+  vars:
+    active_hosts_string: &quot;{{ ansible_play_batch | join(' ')}}&quot;
+# for a case with multiple batches, and you don't need to run a task on each batch.
+# when: inventory_hostname == ansible_play_hosts[0]
+
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,953 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/AWS/networking/Fundamental/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Fundamental - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vpc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fundamental
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPC Router
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internet-gatewayigw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Gateway(IGW)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internet Gateway(IGW)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#egress-only-internet-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Egress-Only Internet Gateway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nat-instance-legacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nat Instance (legacy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nat-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAT Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAT Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#private-nat-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private NAT Gateway
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transit-gateway-tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transit gateway (TGW)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-private-gatewayvgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Private Gateway(VGW)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual Private Gateway(VGW)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#site-to-site-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Site-to-Site VPN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accelerated-site-to-site-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accelerated Site-to-Site VPN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpn-anywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPN Anywhere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpn-cloudhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPN CloudHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VPN CloudHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customer-gateway-device-cgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customer Gateway Device (CGD)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eni-elastic-network-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      ENI (Elastic Network Interface)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eip-elastic-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      EIP (Elastic IP)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>Availability Zone ID - AZ ID (e.g. eu-west-1a) - a unique identifier for an Availability Zone within a Region.</p>
+<p>Public Services - AWS IAM; AMAZON SQS; AMAZON S3</p>
+<p>Private Services - VPC, VPC Endpoints</p>
+<p>HA (Highly available) - your system will almost maintain uptime; guarantees essential services uptime, NOT full functionality</p>
+<p>FT (Fault Tolerant) - your system can continue to operate regardless of disruption</p>
+<h1 id="vpc">VPC</h1>
+<p>Virtual Private Cloud (VPC) - lets you provision a logically isolated section of the AWS Cloud:
+  * Soft limit: 5 VPC in single region in a single account
+  * Best Practice is a multi-account strategy. (not VPC)
+  * Don't use default VPC for production workloads</p>
+<h2 id="vpc-router">VPC Router</h2>
+<p>VPC Routers are highly available devices and it occupies the .1 addressing space on every subnet associated with our VPC.</p>
+<p>5 reserved IPs in each subnet:
+* 10.0.64.0 - network address
+* 10.0.64.1 - VPC router
+* 10.0.64.2 - DNS Server
+* 10.0.64.3 - Reserved by AWS for future use.
+* 10.0.71.255/21 - Network broadcast address (AWS doesn't support broadcast)</p>
+<h2 id="route-tables">Route Tables</h2>
+<p>You can influence the routing for your VPC by editing the main route table or creating custom route tables for each of your subnets.</p>
+<h2 id="internet-gatewayigw">Internet Gateway(IGW)</h2>
+<ul>
+<li>public to private IP address mapping </li>
+<li>Resource must have a public IP.</li>
+<li>There must be a router entry for the IGW.</li>
+</ul>
+<h3 id="egress-only-internet-gateway">Egress-Only Internet Gateway</h3>
+<ul>
+<li>acts like a NAT gateway for IPv6 compute</li>
+</ul>
+<h2 id="nat-instance-legacy">Nat Instance (legacy)</h2>
+<p>Lives in a public subnet;</p>
+<p>Non-public subnets use it as a default rule</p>
+<p>Disable check source/destination flag</p>
+<h2 id="nat-gateway">NAT Gateway</h2>
+<p>up to 45 GBit/s
+Zone-independent architectures
+Need one per AZ</p>
+<h3 id="private-nat-gateway">Private NAT Gateway</h3>
+<ul>
+<li>No elastic IPs</li>
+<li>Private traffic is routed from a private NAT gateway through a VGW or TGW</li>
+</ul>
+<p>Use case: Non-routable IP Ranges (Overlapping)</p>
+<h2 id="transit-gateway-tgw">Transit gateway (TGW)</h2>
+<h2 id="virtual-private-gatewayvgw">Virtual Private Gateway(VGW)</h2>
+<p>Works with AWS site to site VPN connections or AWS direct connect
+  * Managed AWS Service
+  * Acts as a router between your VPC and non-AWS-managed networks
+  * Can be associated with multiple external connections
+  * Can attach to only one VPC at a time</p>
+<p>Limitations:
+  * VGW are NOT VPC transitive
+  * VGW VPN throughput capped at 1.25 Gbps over ALL VPN connections
+  * VGW Single Tunnel Use
+  * VPN Tunnel Supports Single SA Pair
+  * AWS S2S VPN only supports the IPSec protocol</p>
+<p>Only private ASNs may be used for VGW configuration.
+  * AWS default ASN is 64512 in all regions
+  * 7224 in most regions prior to June 30, 2018</p>
+<h3 id="site-to-site-vpn">Site-to-Site VPN</h3>
+<ul>
+<li>Tunnels are established by traffic flowing from on-prem to AWS (by default) </li>
+<li>AWS VPN tunnels can only support a single pair of IPSec security associations.</li>
+<li>AWS creates two (Active/passive) tunnel endpoints in different AZs per VPN connection</li>
+</ul>
+<h3 id="accelerated-site-to-site-vpn">Accelerated Site-to-Site VPN</h3>
+<ul>
+<li>Uses AWS Global Accelerator (GA) to route traffic</li>
+<li>Uses congestion-free AWS global network to route traffic to the best endpoint</li>
+<li>NOT compatible with VGW or CX (Cross Connect), must be attached to TGW</li>
+<li>Offers the absolute best application network performance</li>
+<li>AWS creates and manages two accelerators for you (One for each VPN tunnel)</li>
+</ul>
+<h3 id="vpn-anywhere">VPN Anywhere</h3>
+<ul>
+<li>AWS-managed version of well-known OpenVPN</li>
+<li>The endpoint gets added to only one VPC</li>
+</ul>
+<h2 id="vpn-cloudhub">VPN CloudHub</h2>
+<ul>
+<li>Hub-and-Spoke VPN AWS solution for IPsec VPN tunnels.</li>
+<li>Up to 10 customer gateways.</li>
+<li>Each cgw must have a unique BGP ASN!</li>
+<li>VPN Gateway deployed via AWS VPN CloudHub with no VPC attachment (can also be attached to VPC).</li>
+</ul>
+<h3 id="customer-gateway-device-cgd">Customer Gateway Device (CGD)</h3>
+<p>Represents a customer device in AWS configuration.</p>
+<h2 id="eni-elastic-network-interface">ENI (Elastic Network Interface)</h2>
+<h2 id="eip-elastic-ip">EIP (Elastic IP)</h2>
+<ul>
+<li>5 IPs limit</li>
+</ul>
+<h1 id="ip">IP</h1>
+<p>169.254.0.0/16 - link-local non-redistributed addresses</p>
+<h2 id="classless-inter-domain-routing-cidr">Classless Inter-Domain Routing (CIDR)</h2>
+<p>How to cal the number of available IPs e.g.: 
+  * /27 subnet = 2^(32-27)-5(reserved IPs) = 27
+  * /24 subnet = 2^(32-24)-5 = 2^8-5 = 256-5 = 251</p>
+<h2 id="ipv4-va-ipv6">IPv4 va IPv6</h2>
+<p>IPv4:
+  * required for all VPCs.
+  * You have a choice between a size of /16 to /28 CIDR block.
+  * You can choose the private CIDR block.
+  * Public and private addresses are a thing.</p>
+<p>IPv6:
+  * Fixed size of /56 CIDR blocks (when using AWS-assigned ranges).
+  * Using AWS-owned ranges means you cannot select the assigned CIDR block.
+  * You associate a /64 block to each subnet.
+  * No difference in public and private addresses. Security is controlled with routing and security.</p>
+<blockquote>
+<p>Address spaces are binary!</p>
+</blockquote>
+<h2 id="subnets">Subnets</h2>
+<blockquote>
+<p>Public, Private or VPN only</p>
+</blockquote>
+<p>Private ranges:
+* 192.168.0.0 - 192.168.255.255 (offers 1 /16 range)
+* 172.16.0.0 - 172.31.255.255   (offers 2 /16 ranges)
+* 10.0.0.0 - 10.255.255.255     (offers 256 /16 ranges)</p>
+<p>Ephemeral ports:
+* Linux 32768-61000
+* Windows 49152-65535
+* AWS NAT Gateway 1024-65535</p>
+<h3 id="network-access-control-listsnacls">Network Access Control Lists(NACLs)</h3>
+<p>Applied at the subnet level;</p>
+<p>Stateless;</p>
+<p>Can specify both allow and deny rules;</p>
+<p>Traffic is processed before it enters or leaves the subnet.</p>
+<h3 id="security-groups">Security Groups</h3>
+<blockquote>
+<p>also works like an IP list
+Applied at the resource level (ENI)</p>
+</blockquote>
+<p>Stateful;</p>
+<p>Can specify allow rules, but not deny rules;</p>
+<p>Scoped to VPC;</p>
+<p>Can be applied to:
+* EC2 instances
+* RDS instances
+* Elastic load balancers
+* etc</p>
+<p>Supports <code>self-referencing</code> feature</p>
+<h2 id="vpc-endpoints-vpce">VPC Endpoints (VPCE)</h2>
+<p>VPC-EID: identifier of the endpoint (vpce-xyz)
+pl-id s3 (prefix list) ????</p>
+<p>limits:
+* Endpoints are a reginal service
+* Endpoints are not extendable across VPC boundaries
+* DNS resolution is Required
+* Default VPC Endpoint <strong>Policy</strong> is unrestricted</p>
+<h3 id="interface-endpoints">Interface Endpoints</h3>
+<ul>
+<li>ENI with a private IP address.</li>
+<li>Powered by AWS PrivateLink.</li>
+</ul>
+<p>Services: API Gateway, Athena, Kinesis, etc.</p>
+<h3 id="gateway-endpoints">Gateway Endpoints</h3>
+<ul>
+<li>Gateway specify as a target in a route table</li>
+</ul>
+<p>Gateway endpoints do NOT support hybrid connectivity!
+Leverage interface endpoints for this.</p>
+<p>Services: S3, DynamoDB</p>
+<p>Free??</p>
+<h2 id="vpc-peering">VPC Peering</h2>
+<p>pcx-abc</p>
+<p>limits:
+* no transitive peering allowed
+* You can reference security group IDs across peering connections only if the VPCs are in the same AWS Region!</p>
+<h2 id="vpc-flow-logs">VPC Flow Logs</h2>
+<ul>
+<li>Flow logs may be defined for:</li>
+<li>VPCs</li>
+<li>Subnets</li>
+<li>ENIs</li>
+<li>Flow log definitions apply to all ENIs within scope.</li>
+<li>
+<p>Traffic will be logged separately for each definition.</p>
+</li>
+<li>
+<p>Flow log data may be sent to:</p>
+</li>
+<li>CloudWatch log group<ul>
+<li>1 log stream per ENI</li>
+</ul>
+</li>
+<li>S3 bucket<ul>
+<li>1 log file object per-publication</li>
+</ul>
+</li>
+</ul>
+<p>limitations:
+  * Does not capture all IP traffic
+    * EC2 DNS requests to Route 53
+    * Amazon Windows license activation
+    * Instance metadata
+    * Amazon Time Sync Service
+    * DHCP traffic
+    * Default VPC router (only source and destination ENI)
+    * Endpoint services created by AWS customers
+  * Does not capture application data (operates at l3 and l4 of OSI)</p>
+<h3 id="flow-logs-formats">Flow logs formats</h3>
+<ul>
+<li>version 2:<ul>
+<li>version</li>
+<li>account-id</li>
+<li>interface-id</li>
+<li>srcaddr</li>
+<li>dstaddr</li>
+<li>srcport</li>
+<li>dstport</li>
+<li>protocol</li>
+<li>packets</li>
+<li>bytes</li>
+<li>start</li>
+<li>end</li>
+<li>action</li>
+<li>log-status</li>
+</ul>
+</li>
+<li>version 3:<ul>
+<li>vpc-id</li>
+<li>subnet-id</li>
+<li>instance-id</li>
+<li>tcp-flags</li>
+<li>type</li>
+<li>pkt-srcaddr</li>
+<li>pkt-dstaddr</li>
+</ul>
+</li>
+<li>version 4:<ul>
+<li>region</li>
+<li>az-id</li>
+<li>sublocation-type</li>
+<li>sublocation-id</li>
+</ul>
+</li>
+<li>version 5:<ul>
+<li>pkt-src-aws-service</li>
+<li>pkt-dst-aws-service</li>
+<li>flow-direction</li>
+<li>traffic-path</li>
+</ul>
+</li>
+</ul>
+<h2 id="vpc-traffic-mirroring">VPC Traffic Mirroring</h2>
+<h2 id="reachability-analyzer-aws-network-manager">Reachability Analyzer (AWS Network Manager)</h2>
+<p>VPC tool for performing connectivity testing between a source and destination involving your AWS VPC resources. Create paths for analysis.</p>
+<h2 id="byoip">BYOIP</h2>
+<p>Import your IP space into AWS and then grant AWS the ability to advertise via BGP using their ASNs of 16509 and 14618.
+Use cases:
+* Hardcoded Dependencies
+* Allow List
+* Compliance Requirements
+* On-Premises IPv6 Policy
+* IP Reputations</p>
+<p>limits:
+* the most specific IPv4 address range that you can bring is a /24
+* the most specific <strong>publicly advertised</strong> IPv6 range that you can bring is /48. <strong>Non-publicly advertised</strong> IPv6 range can be /56.
+* Each address range can only belong to one Region at a time.
+* You are allowed five BYOIP ranges per Region per AWS account.
+* No support for Local Zones, Wavelength Zone, AWS Outposts.</p>
+<h1 id="bastion-host-jump-server">Bastion host (Jump Server)</h1>
+<ul>
+<li>Server running at the <strong>edge of a network</strong></li>
+<li>Bastion and their firewalls can be leveraged to perform <strong>port forwarding</strong></li>
+<li>Bastion hosts should be locked down to a small set of allowed users.</li>
+</ul>
+<h1 id="aws-systems-manager-session-manager">AWS Systems Manager - Session Manager</h1>
+<ul>
+<li>Agent-based (SSM agent) management of all managed instances, edge devices, and managed on-premises VM.</li>
+<li>No more SSH or RDP required, port forwarding still supported.</li>
+<li>Centralized access control via IAM policies.</li>
+</ul>
+<h1 id="hpc-high-performance-connectivity">HPC (high performance connectivity)</h1>
+<ul>
+<li>Enhanced networking uses single root I/O virtualization</li>
+<li>Clustering placement groups packs instances close together</li>
+<li>Enabling Enhanced Networking - jumbo frames</li>
+</ul>
+<p>Instance Types:
+* Elastic Network Adapter (ENA) - up to 100 Gbps
+* Intel 82599 Virtual Function (VF) interface - up to 10 Gbps</p>
+<h1 id="aws-cloud-wan">AWS Cloud WAN</h1>
+<p>Helps centrally build, manage, and monitor global networks.</p>
+<ul>
+<li>Core network policy: Declarative document applied to core network capturing intent. Defines all segments, regional routing, and attachments.</li>
+<li>Attachments: Any connection or resource added to your core network. VPCs, VPNs, and TGW attachments.</li>
+<li>Core network edge: Regional connection point managed by AWS in each of your Regions. AWS Transit Gateway behind scenes.</li>
+<li>Network segments: Dedicated routing domains.</li>
+<li>Segment actions: Define how routing works between segments.</li>
+</ul>
+<h2 id="global-network">Global Network</h2>
+<p>Single, private network serving as high-level container for network objects</p>
+<h2 id="core-network">Core Network</h2>
+<p>Part of it is manged by AWS, including regional connections (VPNs, VPC, TGWs)</p>
+<h1 id="guardduty">GuardDuty</h1>
+<p>GuardDuty is a security service that continuously monitors your AWS accounts for malicious activity. It uses threat intelligence and machine learning to analyze various data sources like logs and network traffic. GuardDuty helps you identify and respond to potential threats in your AWS environment.</p>
+<h1 id="aws-shield">AWS Shield</h1>
+<p>AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS.</p>
+<h2 id="aws-shield-standard">AWS Shield Standard</h2>
+<p>AWS Shield Standard primarily mitigates attacks that occur at Layer 3 of the OSI model.</p>
+<h1 id="aws-web-application-firewall-waf">AWS Web Application Firewall (WAF)</h1>
+<p>AWS Web Application Firewall mitigates attacks that primarily occur at Layer 7 (the Application Layer) of the OSI model.</p>
+<h1 id="aws-config">AWS Config</h1>
+<p>AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. Config continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations.</p>
+<h1 id="aws-firewall-manager">AWS Firewall Manager</h1>
+<p>AWS Firewall Manager enforces deployment of Web Application Firewall ACLs,</p>
+<p>fundamental</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../search/main.js"></script>
+      
+    
+  </body>
+</html>

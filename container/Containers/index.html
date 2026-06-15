@@ -1,0 +1,742 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cheat.titov.spb.ru/container/Containers/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Podman/Docker (OCI - Open Container Initiative) - Cheatsheets</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#podmandocker-oci-open-container-initiative" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cheatsheets" class="md-header__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cheatsheets
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Podman/Docker (OCI - Open Container Initiative)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cheatsheets" class="md-nav__button md-logo" aria-label="Cheatsheets" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cheatsheets
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Content
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Content
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8S
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C#
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conmon" class="md-nav__link">
+    <span class="md-ellipsis">
+      conmon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kaniko" class="md-nav__link">
+    <span class="md-ellipsis">
+      kaniko
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Help
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-command-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic command examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-specific-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network specific commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port-Forwarding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes-and-bind-mounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volumes and Bind mounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importexport-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import/export volumes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="podmandocker-oci-open-container-initiative">Podman/Docker (OCI - Open Container Initiative)</h1>
+<h2 id="conmon">conmon</h2>
+<p><code>conmon</code> is a monitoring tool for OCI containers. It is used by Podman and CRI-O to monitor the state of containers.</p>
+<pre><code class="language-sh">podman run -d nginx
+ps -ef | grep conmon
+runc list
+</code></pre>
+<h2 id="kaniko">kaniko</h2>
+<p>kaniko vs buildah</p>
+<h2 id="get-help">Get Help</h2>
+<p>Inline help</p>
+<pre><code class="language-sh">podman --help
+</code></pre>
+<p>Man pages are available for each command. For example:</p>
+<pre><code class="language-sh">man podman-run
+man podman-build
+</code></pre>
+<h2 id="basic-command-examples">Basic command examples</h2>
+<p>Run = Create + Start</p>
+<pre><code class="language-sh">podman create ...
+podman run ...
+podman start ...
+</code></pre>
+<blockquote>
+<p><code>podman stop</code> sends <code>SIGTERM</code> to the container and waits 10 sec, then send <code>SIGKILL</code></p>
+</blockquote>
+<pre><code class="language-sh">podman stop $(podman ps -aq)
+</code></pre>
+<blockquote>
+<p><code>podman kill</code> sends <code>SIGKILL</code> to stop the container immediately</p>
+</blockquote>
+<pre><code class="language-sh">podman kill containerID
+</code></pre>
+<blockquote>
+<p><code>podman pause/unpuase</code> sends <code>SIGSTOP/SIGCONT</code> to the container to all processes in the container. it requires cgroups v2, it's not enabled on RHEL8 by default.</p>
+</blockquote>
+<pre><code class="language-sh">podman pause 4f2038c05b8c
+</code></pre>
+<pre><code class="language-sh"># -i - interactive, -t - tty
+podman exec -it &lt;ContainerId&gt; /bin/sh
+</code></pre>
+<pre><code class="language-sh">podman ps -a
+
+podman logs containerID
+
+podman inspect --format='{{.State.Running}}' containerID
+
+podman pull
+
+podman image ls
+
+podman rm $(podman ps -aq)
+
+# remove all stopped containers
+podman rm --all
+
+# build
+podman build -t localhost/my-container -f Containerfile.my-container
+</code></pre>
+<h2 id="network">Network</h2>
+<pre><code class="language-sh">podman network --help
+</code></pre>
+<h3 id="network-specific-commands">Network specific commands</h3>
+<pre><code class="language-sh">podman network create example-net
+podman network ls
+podman network inspect example-net
+
+# port mapping
+podman port example-net
+
+# Containers can be connected to multiple networks by specifying network names in a comma-separated list
+podman run -d --name double-connector --net postgres-net,redis-net container-image:latest
+
+# If the a container is already running, the following command connects it to the example-net network
+podman network connect example-net my-container
+
+# Removes any networks that are not currently in use by any containers
+podman network prune
+</code></pre>
+<h3 id="dns">DNS</h3>
+<blockquote>
+<p>DNS is disabled in the default podman network. To enable DNS resolution between containers, create a Podman network and connect your containers to that network.</p>
+</blockquote>
+<h3 id="port-forwarding">Port-Forwarding</h3>
+<p><code>-p</code> or <code>--publish</code> option of the podman run command forwards a port <em>HOST_PORT:CONTAINER_PORT</em></p>
+<pre><code class="language-sh">podman run -p 8075:80 my-app
+podman run -p 127.0.0.1:8075:80 my-app
+
+# List port mappings
+podman port my-app
+
+# --all option lists port mappings for all containers
+podman port --all
+
+podman inspect my-app -f '{{.NetworkSettings.Networks.apps.IPAddress}}'
+</code></pre>
+<h2 id="storage">Storage</h2>
+<h3 id="storage-commands">Storage commands</h3>
+<pre><code class="language-sh">podman inspect volumeID
+podman volume prune
+podman volume create volumeNAME
+
+podman volume ls --format=&quot;{{.Name}}\t{{.Mountpoint}}&quot;
+</code></pre>
+<p><code>diff</code> - display the changes made to a container's filesystem since it was started</p>
+<pre><code class="language-sh">podman diff elastic_maxwell
+</code></pre>
+<p><code>cp</code> - copy files/folders between a container and the local filesystem</p>
+<pre><code class="language-sh">podman cp index.html elastic_maxwell:/var/wwww/index.html
+</code></pre>
+<h3 id="volumes-and-bind-mounts">Volumes and Bind mounts</h3>
+<p>Volumes - managed by Podman</p>
+<pre><code class="language-sh">podman volume create http-data
+podman volume inspect http-data
+</code></pre>
+<p>for rootless containers, Podman stores volume in the <code>$HOME/.local/share/containers/storage/volumes</code> directory.</p>
+<p><strong>Bind mounts</strong> - can exist anywhere on the host filesystem</p>
+<p>Both <strong>volumes</strong> and <strong>bind mounts</strong> can use <code>--volume</code> or <code>-v</code> parameter</p>
+<pre><code class="language-sh"># --volume /path/on/host:/path/in/container:OPTIONS
+
+# Bind mounts with the read-only option
+podman run --volume  /www:/var/www/html:ro ubi8/httpd-24:latest
+
+# Volume mount into a container
+podman run --volume http-data:/var/www/html ubi8/httpd-24:latest
+## Because Podman manages the volume, you do not need to configure SELinux permissions.
+</code></pre>
+<p>Alternatively, you can use the <code>--mount</code> parameter</p>
+<pre><code class="language-sh">--mount type=TYPE,source=/path/on/host,destination=/path/in/container,options=OPTIONS
+# type= bind | volume | tmpfs
+# options=ro | rw | z | Z
+</code></pre>
+<p>Some application cannot use the default COW file system in a specific directory for performance reasons, but do not need persistence or data sharing. In this case, you can use the <code>tmpfs</code> mount type, which means that the data in mount is ephemeral but does not use the COW file system.</p>
+<pre><code class="language-sh">podman run -e POSTGRESQL_ADMIN_PASSWORD=redhat --network lab-net \
+  --mount  type=tmpfs,tmpfs-size=512M,destination=/var/lib/pgsql/data \
+  registry.redhat.io/rhel9/postgresql-13:1
+</code></pre>
+<h3 id="importexport-volumes">Import/export volumes</h3>
+<pre><code class="language-sh">podman volume export http_data --output web_data.tar.gz
+podman volume import web_data.tar.gz
+</code></pre>
+<h1 id="links">Links</h1>
+<h2 id="storage_1">Storage</h2>
+<h3 id="overlaygo"><a href="https://github.com/containers/podman/blob/v4.2.0/vendor/github.com/containers/storage/drivers/overlay/overlay.go">Overlay.go</a></h3>
+<h3 id="selinux-and-container-file-permissions"><a href="https://www.redhat.com/sysadmin/user-namespaces-selinux-rootless-containers">SELinux and Container File Permissions</a></h3>
+<h2 id="networking">Networking</h2>
+<h3 id="podman-4-network"><a href="https://www.redhat.com/sysadmin/podman-new-network-stack">Podman 4 network</a></h3>
+<h3 id="nsenter"><a href="https://www.redhat.com/sysadmin/container-namespaces-nsenter"><code>nsenter</code></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
