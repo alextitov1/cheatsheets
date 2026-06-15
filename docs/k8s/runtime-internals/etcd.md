@@ -23,7 +23,7 @@ mv etcd-v3.5.0-linux-amd64/etcd* /usr/local/bin/
 mkdir -p /etc/etcd /var/lib/etcd
 ```
 
-```
+```sh
 #etcd systemd unit file
 ExecStart=/usr/local/bin/etcd \
   --name ${ETCD_NAME} \
@@ -44,7 +44,7 @@ ExecStart=/usr/local/bin/etcd \
   --client-cert-auth \
   --peer-client-cert-auth \
 ...
-```
+
 
 
 
